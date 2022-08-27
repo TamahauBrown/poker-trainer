@@ -121,8 +121,8 @@
 
 .sidebar {
   position: absolute;
-  width: 74px;
-  height: 960px;
+  width: 2.5vw;
+  height: 100%;
   left: 0;
   top: 0;
 

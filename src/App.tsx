@@ -20,7 +20,7 @@ function App() {
                     </div>
                 </header>
             <body>
-
+            <div className="sidebar"> </div>
             </body>
         </div>
 );
