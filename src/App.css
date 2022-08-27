@@ -14,8 +14,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /*background-color: #F2F2F7;*/
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +35,96 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Exercise_Table */
+
+.table {
+  position: absolute;
+  width: 1655px;
+  height: 640px;
+  left: 106px;
+  top: 298px;
+}
+
+/* Exercise information */
+.exercise {
+  border-radius: 30px;
+  display: inline-grid;
+  padding-top: 1vh;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+}
+
+.exShape {
+  height: 15vh;
+  width: 10vw;
+  background: #D9D9D9;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+#ex1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#ex2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#ex3 {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+#ex4 {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.exerciseText {
+  font-family: 'Noto Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+  align-items: center;
+  color: #000000;
+  top: 100%;
+}
+
+#ex1text {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#ex2text {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+#ex3text {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#ex4Text {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+/* Sidebar */
+
+.sidebar {
+  position: absolute;
+  width: 74px;
+  height: 960px;
+  left: 0;
+  top: 0;
+
+  background: #3A3A3C;
 }
