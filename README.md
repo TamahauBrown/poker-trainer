@@ -30,6 +30,7 @@ To run Tauri you run the command `npm run tauri dev`
 
 ## Final Result of running Tauri:
 If this is done correctly you should have a small application on your taskbar with Tauri running (not through a web browser)
+![image](https://user-images.githubusercontent.com/48704237/189056280-ae669452-4680-4ae6-95b2-006ebca9994b.png)
 
 ## Resources: 
 [1] React and Tauri tutorial https://kent.medium.com/get-started-making-desktop-apps-using-rust-and-react-78a7e07433ce
