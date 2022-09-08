@@ -66,6 +66,25 @@
   border-radius: 30px;
 }
 
+.PokerTable {
+  height: 60vh;
+  width: 90vw;
+  background: #007D1B;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 100px;
+  border: 40px solid black;
+  z-index: -2;
+  text-align: center;
+  }
+
+.TableText{
+  color: black;
+  font-size: 72px;
+  z-index: -1;
+  padding-top: 20vh;
+}
+
 #ex1 {
   grid-column: 1;
   grid-row: 1;
