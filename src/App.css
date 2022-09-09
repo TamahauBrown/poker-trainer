@@ -160,6 +160,6 @@
 /* Playing cards */
 #playerCards{
   left: 7%;
-  top: 65%;
-  transform: translateY(-65%);
+  position: absolute;
+  padding-top: 22vh;
 }

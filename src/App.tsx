@@ -21,7 +21,6 @@ function App() {
                 <div className="sidebar"> </div>
                 <div className="floor">
                 <div className="PokerTable">
-                    <div className="TableText">Poker table</div>
                     <div id="playerCards">
                     <img src={"./Images/backs/red.svg"} alt="Player card left" className="playerCards" id="leftCard" />
                     <img src={"./Images/backs/red.svg"} alt="Player card right" className="playerCards" id="rightCard" />
