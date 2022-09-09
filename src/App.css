@@ -137,13 +137,12 @@
 }
 
 /* Poker table */
-.PokerTable {
+.pokerTable {
   height: 50vh;
   width: 90vw;
   background: #007D1B;
   /*align-items: center;*/
-  margin: 0 auto;
-  margin-top: 7vh;
+  margin: 7vh auto auto auto;
   border-radius: 100px;
   border: 40px solid black;
   z-index: -2;
@@ -159,7 +158,43 @@
 
 /* Playing cards */
 #playerCards{
-  left: 7%;
   position: absolute;
   padding-top: 22vh;
+  left: 7%;
+}
+
+/* Playing cards */
+#tableCards{
+  position: absolute;
+  padding-top: 22vh;
+  left: 40%;
+}
+
+#opponentCards {
+  left: 70%;
+}
+
+.tableCards, .playerCards, .hand1, .hand2, .hand3, .hand4, .hand5 {
+  padding-left: 2vh;
+}
+
+#opponentHand1, #opponentHand2, #opponentHand3, #opponentHand4, #opponentHand5 {
+  position: absolute;
+  left: 80%;
+}
+
+#opponentHand1{
+  padding-top: 8vh;
+}
+
+#opponentHand2{
+  padding-top: 17vh;
+}
+
+#opponentHand3{
+  padding-top: 26vh;
+}
+
+#opponentHand4{
+  padding-top: 35vh;
 }
