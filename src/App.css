@@ -130,7 +130,7 @@
 }
 
 .floor {
-  height: 69vh;
+  height: 62vh;
   width: 100vw;
   background-color: #007AFF;
   z-index: -3;
@@ -149,13 +149,13 @@
   z-index: -2;
 }
 
-.TableText{
+/*.TableText{
   color: black;
   text-align: center;
   padding-top: 18vh;
   font-size: 72px;
   z-index: -1;
-}
+}*/
 
 /* Playing cards */
 #playerCards{
