@@ -19,10 +19,14 @@ function App() {
                     <div className="exerciseText" id="ex4text">Exercise 4</div>
                 </div>
                 <div className="sidebar"> </div>
+                <div className="floor">
                 <div className="PokerTable">
-                    <h1 className="TableText"> Poker Trainer </h1>
+                    <div className="TableText">Poker table</div>
+                    <div id="playerCards">
                     <img src={"./Images/backs/red.svg"} alt="Player card left" className="playerCards" id="leftCard" />
                     <img src={"./Images/backs/red.svg"} alt="Player card right" className="playerCards" id="rightCard" />
+                    </div>
+                </div>
                 </div>
 
             </header>

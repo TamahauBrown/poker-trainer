@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center; */
 }
 
 .App-logo {
@@ -16,7 +16,7 @@
 .App-header {
   /*background-color: #F2F2F7;*/
   min-height: 20vh;
-  display: flex;
+  /*display: flex;*/
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -50,6 +50,7 @@
 /* Exercise information */
 .exercise {
   border-radius: 30px;
+  text-align: center;
   display: inline-grid;
   padding-top: 1vh;
   grid-template-rows: repeat(2, 1fr);
@@ -125,17 +126,24 @@
   height: 100%;
   left: 0;
   top: 0;
-
   background: #3A3A3C;
+}
+
+.floor {
+  height: 69vh;
+  width: 100vw;
+  background-color: #007AFF;
+  z-index: -3;
 }
 
 /* Poker table */
 .PokerTable {
-  height: 60vh;
+  height: 50vh;
   width: 90vw;
   background: #007D1B;
   /*align-items: center;*/
   margin: 0 auto;
+  margin-top: 7vh;
   border-radius: 100px;
   border: 40px solid black;
   z-index: -2;
@@ -143,11 +151,15 @@
 
 .TableText{
   color: black;
+  text-align: center;
+  padding-top: 18vh;
   font-size: 72px;
   z-index: -1;
-  padding-top: 20vh;
 }
 
-/* Playing Cards */
-.playerCards{
+/* Playing cards */
+#playerCards{
+  left: 7%;
+  top: 65%;
+  transform: translateY(-65%);
 }
