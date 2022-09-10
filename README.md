@@ -2,6 +2,7 @@
 
 ## Version this application is run on:
 NPM: 8.17.0
+
 Rust: 1.62.0
 
 ## Available Scripts
