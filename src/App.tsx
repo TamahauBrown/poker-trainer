@@ -1,7 +1,42 @@
 //import React from 'react';
 import './App.css';
+import * as React from 'react';
+import {styled} from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Slider from '@mui/material/Slider';
+import MuiInput from '@mui/material/Input';
+// import VolumeUp from '@mui/icons-material/VolumeUp';
+const Input = styled(MuiInput)`
+  width: 42px;
+`;
 
 function App() {
+    const [value, setValue] = React.useState<number | string | Array<number | string>>(
+        30,
+    );
+
+    const handleSliderChange = (event: Event, newValue: number | number[]) => {
+        setValue(newValue);
+    };
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value === '' ? '' : Number(event.target.value));
+    };
+
+    const handleBlur = () => {
+        if (value < 0) {
+            setValue(0);
+        } else if (value > 100) {
+            setValue(100);
+        }
+    };
+
+    function submit() {
+        console.log(value)
+    }
+
     return (
         <div className="App">
             <head>
@@ -9,6 +44,9 @@ function App() {
                 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&display=swap" rel="stylesheet"/>
             </head>
             <header className="App-header">
+                <div className="sidebar">
+                    <img src={"./Images/other/spades_ace_simple.svg"} width="50%" id="logo"/>
+                </div>
                 <div className="exercise">
                     <div className="exShape" id="ex1"></div>
                     <div className="exShape" id="ex2"></div>
@@ -19,7 +57,6 @@ function App() {
                     <div className="exerciseText" id="ex3text">Exercise 3</div>
                     <div className="exerciseText" id="ex4text">Exercise 4</div>
                 </div>
-                <div className="sidebar"></div>
                 <div className="floor">
                     <div className="pokerTable">
                         <img src={"./Images/backs/red.svg"} alt="Player card left" className="playerCards"
@@ -42,6 +79,39 @@ function App() {
                         <img src={"./Images/backs/red.svg"} alt="OpponentHand3Right" className="hand4" id="ohl5"/>
                         <img src={"./Images/backs/red.svg"} alt="OpponentHand5Left" className="hand5" id="ohr5"/>
                     </div>
+                    <Box sx={{width: 500}} className="slider">
+                        <Typography id="input-slider" gutterBottom>
+                            <text id="chances">What are your chances of winning?</text>
+                        </Typography>
+                        <Grid container spacing={2} alignItems="center">
+                            <Grid item>
+                            </Grid>
+                            <Grid item xs>
+                                <Slider
+                                    value={typeof value === 'number' ? value : 0}
+                                    onChange={handleSliderChange}
+                                    aria-labelledby="input-slider"
+                                />
+                            </Grid>
+                            <Grid item>
+                                <Input
+                                    id="chanceBox"
+                                    value={value}
+                                    size="medium"
+                                    onChange={handleInputChange}
+                                    onBlur={handleBlur}
+                                    inputProps={{
+                                        step: 10,
+                                        min: 0,
+                                        max: 100,
+                                        type: 'number',
+                                        'aria-labelledby': 'input-slider',
+                                    }}
+                                />
+                            </Grid>
+                        </Grid>
+                        <button onClick={submit} id="submitGuess"> SUBMIT</button>
+                    </Box>
                 </div>
             </header>
         </div>
