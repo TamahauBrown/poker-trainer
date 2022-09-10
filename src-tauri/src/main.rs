@@ -11,7 +11,7 @@ use poker_lib::CardDeck;
 
 fn main() {
   tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![get_exercises])
+    .invoke_handler(tauri::generate_handler![get_exercises, equity_estimate])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
@@ -26,7 +26,7 @@ fn get_exercises() -> Vec<Exercises> {
   return Exercises::iter().collect()
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 struct EquityEstimateResponse {
   player_hand: poker_lib::Hand,
   // TODO: Not too sure if we should be adding probability here

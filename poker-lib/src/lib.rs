@@ -2,8 +2,9 @@ use rust_poker::equity_calculator;
 use rust_poker::hand_range::{get_card_mask, HandRange};
 pub use playing_cards::core::Card;
 pub use playing_cards::core::CardDeck;
+use serde::Serialize;
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Serialize)]
 pub struct Hand(pub Card, pub Card);
 
 impl Hand {

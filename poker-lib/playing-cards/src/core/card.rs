@@ -3,13 +3,13 @@ use num::traits::FromPrimitive;
 use strum_macros::EnumIter;
 use std::str::FromStr;
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 /// An enum representation of the rank of a card
 ///
 /// Each value corresponds to the rank strength.
 #[allow(missing_docs)]
-#[derive(Debug, PartialEq, Clone, Copy, FromPrimitive, EnumIter)]
+#[derive(Debug, PartialEq, Clone, Copy, FromPrimitive, EnumIter, Serialize)]
 pub enum Value {
     Two = 0,
     Three = 1,
@@ -156,7 +156,7 @@ impl std::fmt::Display for Value {
 ///
 /// Numerical value is just for distinction and each suit has equal strength
 #[allow(missing_docs)]
-#[derive(Debug, PartialEq, Clone, Copy, FromPrimitive, EnumIter)]
+#[derive(Debug, PartialEq, Clone, Copy, FromPrimitive, EnumIter, Serialize)]
 pub enum Suit {
     Heart = 0,
     Club = 1,
@@ -228,7 +228,7 @@ impl std::fmt::Display for Suit {
 }
 
 /// A structural representation of a playing card.
-#[derive(Deserialize, Debug, PartialEq, Clone, Copy)]
+#[derive(Deserialize, Debug, PartialEq, Clone, Copy, Serialize)]
 #[serde(try_from = "String")]
 pub struct Card {
     /// The Value of the Card

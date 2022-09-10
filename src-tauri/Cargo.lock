@@ -2207,6 +2207,7 @@ version = "0.1.0"
 dependencies = [
  "playing-cards",
  "rust_poker",
+ "serde",
 ]
 
 [[package]]
