@@ -14,9 +14,8 @@
 }
 
 .App-header {
-  /*background-color: #F2F2F7;*/
   min-height: 20vh;
-  /*display: flex;*/
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -49,13 +48,13 @@
 
 /* Exercise information */
 .exercise {
-  border-radius: 30px;
   text-align: center;
   display: inline-grid;
   padding-top: 1vh;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
+  height: 20%;
 }
 
 .exShape {
@@ -65,6 +64,8 @@
   align-items: center;
   margin: 0 auto;
   border-radius: 30px;
+  box-shadow: #888888 5px 1px;
+  border: 1px solid #888888;
 }
 
 #ex1 {
@@ -121,7 +122,7 @@
 /* Sidebar */
 
 .sidebar {
-  position: absolute;
+  position: fixed;
   width: 2.5vw;
   height: 100%;
   left: 0;
@@ -130,71 +131,159 @@
 }
 
 .floor {
-  height: 62vh;
-  width: 100vw;
-  background-color: #007AFF;
+  height: 79vh;
+  width: 100%;
+  background-color: #9BA0AA;
   z-index: -3;
 }
 
 /* Poker table */
 .pokerTable {
-  height: 50vh;
-  width: 90vw;
+  height: 48vh;
+  width: 80vw;
   background: #007D1B;
   /*align-items: center;*/
-  margin: 7vh auto auto auto;
+  margin: 4vh auto 0 8%;
   border-radius: 100px;
   border: 40px solid black;
   z-index: -2;
+  padding: 3vh 0 3vh 0;
+  display: inline-grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(20, 1fr);
+  grid-gap: 2vh;
 }
 
-/*.TableText{
+/*#tableText{
   color: black;
-  text-align: center;
   padding-top: 18vh;
   font-size: 72px;
   z-index: -1;
-}*/
+  grid-row: 5;
+  grid-column: 9;
+}*
 
 /* Playing cards */
 #playerCards{
-  position: absolute;
   padding-top: 22vh;
   left: 7%;
 }
 
 /* Playing cards */
-#tableCards{
-  position: absolute;
-  padding-top: 22vh;
-  left: 40%;
+
+.tableCards, .playerCards {
+  width: 100%;
 }
 
-#opponentCards {
-  left: 70%;
+.hand1, .hand2, .hand3, .hand4, .hand5 {
+  width: 75%;
 }
 
-.tableCards, .playerCards, .hand1, .hand2, .hand3, .hand4, .hand5 {
-  padding-left: 2vh;
+/* All the cards */
+#leftCard{
+  grid-row: 5;
+  grid-column: 2;
 }
 
-#opponentHand1, #opponentHand2, #opponentHand3, #opponentHand4, #opponentHand5 {
-  position: absolute;
-  left: 80%;
+#rightCard {
+  grid-row: 5;
+  grid-column: 3;
 }
 
-#opponentHand1{
-  padding-top: 8vh;
+#flop1{
+  grid-row: 5;
+  grid-column: 9;
 }
 
-#opponentHand2{
-  padding-top: 17vh;
+#flop2{
+  grid-row: 5;
+  grid-column: 10;
 }
 
-#opponentHand3{
-  padding-top: 26vh;
+#flop3{
+  grid-row: 5;
+  grid-column: 11;
 }
 
-#opponentHand4{
-  padding-top: 35vh;
+#turn{
+  grid-row: 5;
+  grid-column: 12;
+}
+
+#river{
+  grid-row: 5;
+  grid-column: 13;
+}
+
+#oh1l{
+  grid-row: 0;
+  grid-column: 18;
+}
+
+#ohr1{
+  grid-row: 0;
+  grid-column: 19;
+}
+
+#ohl2{
+  grid-row: 2;
+  grid-column: 18;
+}
+
+#ohr2{
+  grid-row: 2;
+  grid-column: 19;
+}
+
+#ohl3{
+  grid-row: 5;
+  grid-column: 18;
+}
+
+#ohr3{
+  grid-row: 5;
+  grid-column: 19;
+}
+
+#ohl4{
+  grid-row: 7;
+  grid-column: 18;
+}
+
+#ohr4{
+  grid-row: 7;
+  grid-column: 19;
+}
+
+#ohl5{
+  grid-row: 9;
+  grid-column: 18;
+}
+
+#ohr5{
+  grid-row: 9;
+  grid-column: 19;
+}
+
+#logo{
+  padding: 1vh 0 0 25%;
+}
+
+.slider{
+  padding-top: 2vh;
+  padding-left: 40%;
+  text-align: center;
+}
+
+#chances{
+  font-size: 24px;
+}
+
+#chanceBox{
+  font-size: 20px;
+}
+
+#submitGuess {
+  font-size: 24px;
+  margin-left: 3vh;
 }
