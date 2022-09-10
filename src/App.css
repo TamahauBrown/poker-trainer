@@ -139,13 +139,18 @@
 /* Poker table */
 .pokerTable {
   height: 50vh;
-  width: 90vw;
+  width: 80vw;
   background: #007D1B;
   /*align-items: center;*/
-  margin: 7vh auto auto auto;
+  margin: 2vh auto auto 7vh;
   border-radius: 100px;
   border: 40px solid black;
   z-index: -2;
+  padding: 3vh 0 3vh 0;
+  display: inline-grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(20, 1fr);
+  grid-gap: 0;
 }
 
 /*.TableText{
@@ -158,43 +163,98 @@
 
 /* Playing cards */
 #playerCards{
-  position: absolute;
   padding-top: 22vh;
   left: 7%;
 }
 
 /* Playing cards */
-#tableCards{
-  position: absolute;
-  padding-top: 22vh;
-  left: 40%;
-}
-
-#opponentCards {
-  left: 70%;
-}
 
 .tableCards, .playerCards, .hand1, .hand2, .hand3, .hand4, .hand5 {
-  padding-left: 2vh;
+  width: 75%;
 }
 
-#opponentHand1, #opponentHand2, #opponentHand3, #opponentHand4, #opponentHand5 {
-  position: absolute;
-  left: 80%;
+/* All the cards */
+#leftCard{
+  grid-row: 5;
+  grid-column: 2;
 }
 
-#opponentHand1{
-  padding-top: 8vh;
+#rightCard {
+  grid-row: 5;
+  grid-column: 3;
 }
 
-#opponentHand2{
-  padding-top: 17vh;
+#flop1{
+  grid-row: 5;
+  grid-column: 6;
 }
 
-#opponentHand3{
-  padding-top: 26vh;
+#flop2{
+  grid-row: 5;
+  grid-column: 8;
 }
 
-#opponentHand4{
-  padding-top: 35vh;
+#flop3{
+  grid-row: 5;
+  grid-column: 10;
+}
+
+#turn{
+  grid-row: 5;
+  grid-column: 12;
+}
+
+#river{
+  grid-row: 5;
+  grid-column: 14;
+}
+
+#oh1l{
+  grid-row: 0;
+  grid-column: 18;
+}
+
+#ohr1{
+  grid-row: 0;
+  grid-column: 19;
+}
+
+#ohl2{
+  grid-row: 2;
+  grid-column: 18;
+}
+
+#ohr2{
+  grid-row: 2;
+  grid-column: 19;
+}
+
+#ohl3{
+  grid-row: 5;
+  grid-column: 18;
+}
+
+#ohr3{
+  grid-row: 5;
+  grid-column: 19;
+}
+
+#ohl4{
+  grid-row: 7;
+  grid-column: 18;
+}
+
+#ohr4{
+  grid-row: 7;
+  grid-column: 19;
+}
+
+#ohl5{
+  grid-row: 9;
+  grid-column: 18;
+}
+
+#ohr5{
+  grid-row: 9;
+  grid-column: 19;
 }
