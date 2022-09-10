@@ -1,0 +1,11 @@
+[package]
+name = "hand_indexer"
+version = "0.1.2"
+authors = ["ruffers9 <kwmurph2@asu.edu>"]
+edition = "2018"
+license = "MIT"
+description = "A rust interface around the poker hand indexer library by Kevin Waugh"
+
+[build-dependencies]
+bindgen = "0.49.4"
+cmake = "0.1"
