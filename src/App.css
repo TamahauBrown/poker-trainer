@@ -14,9 +14,8 @@
 }
 
 .App-header {
-  /*background-color: #F2F2F7;*/
   min-height: 20vh;
-  /*display: flex;*/
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -49,7 +48,6 @@
 
 /* Exercise information */
 .exercise {
-  border-radius: 30px;
   text-align: center;
   display: inline-grid;
   padding-top: 1vh;
@@ -65,6 +63,8 @@
   align-items: center;
   margin: 0 auto;
   border-radius: 30px;
+  box-shadow: #888888 5px 1px;
+  border: 1px solid #888888;
 }
 
 #ex1 {
@@ -130,8 +130,8 @@
 }
 
 .floor {
-  height: 62vh;
-  width: 100vw;
+  height: 69vh;
+  width: 100%;
   background-color: #007AFF;
   z-index: -3;
 }
@@ -142,7 +142,7 @@
   width: 80vw;
   background: #007D1B;
   /*align-items: center;*/
-  margin: 2vh auto auto 7vh;
+  margin: 4vh auto auto 7vh;
   border-radius: 100px;
   border: 40px solid black;
   z-index: -2;
