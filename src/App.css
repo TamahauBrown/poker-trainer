@@ -286,4 +286,5 @@
 #submitGuess {
   font-size: 24px;
   margin-left: 3vh;
+  border-radius: 7px;
 }

@@ -114,9 +114,10 @@ function App() {
                                         'aria-labelledby': 'input-slider',
                                     }}
                                 />
+
+                                <button onClick={submit} id="submitGuess"> SUBMIT</button>
                             </Grid>
                         </Grid>
-                        <button onClick={submit} id="submitGuess"> SUBMIT</button>
                     </Box>
                 </div>
             </header>
