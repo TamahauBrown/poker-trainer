@@ -1,5 +1,5 @@
 //import React from 'react';
-import './App.css';
+import './App.scss';
 import * as React from 'react';
 import {styled} from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -46,7 +46,6 @@ function App() {
     return (
         <div className="App">
             <head>
-                <title>Poker Trainer</title>
                 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&display=swap" rel="stylesheet"/>
             </head>
             <header className="App-header">
