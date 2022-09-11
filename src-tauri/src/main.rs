@@ -8,9 +8,18 @@ use strum::EnumIter;
 use strum::IntoEnumIterator;
 use serde::{Serialize, Deserialize};
 use poker_lib::CardDeck;
+use tauri::Manager;
+use tauri::PhysicalSize;
 
 fn main() {
   tauri::Builder::default()
+    .setup(|app| {
+      let main_window = app.get_window("main").unwrap();
+      main_window.set_size(PhysicalSize::new(1600, 900)).unwrap();
+      main_window.set_min_size(Some(PhysicalSize::new(1600, 900))).unwrap();
+      main_window.set_resizable(false).unwrap();
+      Ok(())
+    })
     .invoke_handler(tauri::generate_handler![get_exercises, equity_estimate])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
