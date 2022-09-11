@@ -7,6 +7,8 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import MuiInput from '@mui/material/Input';
+import { invoke } from '@tauri-apps/api/tauri'
+
 // import VolumeUp from '@mui/icons-material/VolumeUp';
 const Input = styled(MuiInput)`
   width: 42px;
@@ -34,7 +36,11 @@ function App() {
     };
 
     function submit() {
-        console.log(value)
+        let result = invoke('equity_estimate', { });
+        result.then(res => {
+            console.log(res)
+        });
+        console.log(value);
     }
 
     return (
