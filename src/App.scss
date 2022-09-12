@@ -5,7 +5,7 @@ $lightgrey: #9BA0AA;
 $white: #D9D9D9;
 
 #chanceBox{
-  font-size: 20px;
+  font-size: 18px;
 }
 
 #chances{
@@ -160,15 +160,23 @@ E.g.: ohl1 means opponent hand left 1
 }
 
 .slider{
-  padding-top: 2vh;
-  padding-left: 40%;
+  width: 33%;
   text-align: center;
 }
 
+#sliderFunctions {
+  padding-top: 2vh;
+  padding-left: 40%;
+  width: 60%;
+  display: inline-flex;
+}
+
+
 #submitGuess {
-  font-size: 24px;
+  font-size: 14px;
   margin-left: 3vh;
   border-radius: 7px;
+  padding-top: 2vh;
 }
 
 #tableCards{
@@ -198,3 +206,4 @@ E.g.: ohl1 means opponent hand left 1
 #playerCards, #tableCards {
   padding-top: 10%;
 }
+
