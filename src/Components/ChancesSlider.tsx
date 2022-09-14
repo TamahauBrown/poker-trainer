@@ -9,6 +9,9 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import * as React from "react"
 
+// @ts-ignore
+import {equity} from "./ExerciseHeader.tsx";
+
 const Input = styled(MuiInput)`
   width: 42px;
 `;
@@ -33,6 +36,18 @@ export function ChancesSlider() {
             setValue(100);
         }
     };
+
+    const onSubmit = () => {
+        let chancesText = document.getElementById("chances");
+        console.log(equity);
+        //console.log(value);
+        if(value === Math.round(equity)) {
+            chancesText.innerText = "Correct, your chances are " + Math.round(equity) + "%";
+        }
+        else {
+            chancesText.innerText = "Sorry, the correct value was: " + Math.round(equity) + "%";
+        }
+    }
 
     return(
         <div id="sliderFunctions">
@@ -69,7 +84,7 @@ export function ChancesSlider() {
                 </Grid>
             </Box>
             <div id="submitGuess">
-                <Button variant="contained" endIcon={<SendIcon/>}>
+                <Button variant="contained" endIcon={<SendIcon/>} onClick={onSubmit}>
                     SUBMIT
                 </Button>
             </div>

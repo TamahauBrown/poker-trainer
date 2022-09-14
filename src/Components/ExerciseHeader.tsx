@@ -1,16 +1,19 @@
 import * as React from "react";
 import {invoke} from "@tauri-apps/api/tauri";
 
+var equity;
 export function ExerciseHeader() {
     var full_path;
     const image_path = "./Images/fronts/";
     const svg = ".svg";
 
     function hands(res) {
-        var entries = Object.entries(res);
+        let entries = Object.entries(res);
         board_cards(entries[0][1]);
         opponent_cards(entries[2][1][0]);
         player_cards(entries[3][1]);
+        let equity = entries[1][1];
+        return equity;
     }
 
     /*
@@ -30,7 +33,6 @@ export function ExerciseHeader() {
 
     function board_cards(entries){
         let cards = ["flop1", "flop2", "flop3", "turn", "river"]
-        //Check for length and proceed accordingly
             let i = 0;
             entries.forEach(function (value) {
                 entries = Object.entries(value);
@@ -56,7 +58,7 @@ export function ExerciseHeader() {
 
                 entries = Object.entries(value);
                 full_path = image_path + entries[0][1].toString().toLowerCase() + "_" + entries[1][1].toString().toLowerCase() + svg;
-                //document.getElementById(cards[i]).style.width = calculateWidth.toString();
+                //document.getElementById(cards[i]).style.width = calculateWidth.toString(); Backlog with the calculateWidth
                 let opponentCard = document.getElementById(cards[i]) as HTMLImageElement;
                 opponentCard.src = full_path;
                 if(i % 2 === 0) {
@@ -72,13 +74,10 @@ export function ExerciseHeader() {
     function equity_estimate() {
         let result = invoke('equity_estimate', {});
         result.then(res => {
-            hands(res);
-            console.log(res);
-            //console.log(board);
-            //console.log(opp_hands);
-            //console.log(player_hands);
+            //Where do I store this value now?
+            equity = 100 - (parseFloat(hands(res).toString()) * 100);
+            return equity;
         });
-        //console.log(value);
     }
 
     return (
@@ -94,3 +93,4 @@ export function ExerciseHeader() {
         </div>
     );
 }
+export {equity}
