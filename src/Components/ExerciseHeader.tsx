@@ -1,9 +1,9 @@
 import * as React from "react";
 import {invoke} from "@tauri-apps/api/tauri";
 
-var equity;
+let equity;
 export function ExerciseHeader() {
-    var full_path;
+    let full_path;
     const image_path = "./Images/fronts/";
     const svg = ".svg";
 
@@ -12,7 +12,7 @@ export function ExerciseHeader() {
         board_cards(entries[0][1]);
         opponent_cards(entries[2][1][0]);
         player_cards(entries[3][1]);
-        let equity = entries[1][1];
+        equity = entries[1][1];
         return equity;
     }
 
@@ -46,7 +46,7 @@ export function ExerciseHeader() {
 
         function opponent_cards(entries){
         let cards = ["ohl3", "ohr3", "ohl2", "ohr2", "ohl4", "ohr4", "ohl1", "ohr1", "ohl5", "ohr5"];
-        let percentages = ["percentage3", "percentage4", "percentage2", "percentage1", "percentage5"];
+        //let percentages = ["percentage3", "percentage4", "percentage2", "percentage1", "percentage5"];
             for(let i = entries.length; i < cards.length; i++) {
                 document.getElementById(cards[i]).style.display = "none";
             }
@@ -61,10 +61,10 @@ export function ExerciseHeader() {
                 //document.getElementById(cards[i]).style.width = calculateWidth.toString(); Backlog with the calculateWidth
                 let opponentCard = document.getElementById(cards[i]) as HTMLImageElement;
                 opponentCard.src = full_path;
-                if(i % 2 === 0) {
-                    document.getElementById(percentages[j]).style.display = "block";
-                    j++;
-                }
+                //if(i % 2 === 0) {
+                    //document.getElementById(percentages[j]).style.display = "block";
+                    //j++;
+                //}
                 i++;
             });
 
@@ -75,7 +75,6 @@ export function ExerciseHeader() {
         document.getElementById("chances").innerText = "What are your chances of winning?";
         let result = invoke('equity_estimate', {});
         result.then(res => {
-            //Where do I store this value now?
             equity = 100 - (parseFloat(hands(res).toString()) * 100);
             return equity;
         });
