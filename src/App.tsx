@@ -21,7 +21,6 @@ function App() {
                <ExerciseHeader> </ExerciseHeader>
                 <div id="floor">
                     <PokerTable> </PokerTable>
-                    <Slider> </Slider>
                 </div>
             </header>
         </div>
