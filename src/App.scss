@@ -4,6 +4,10 @@ $grey: #888888;
 $lightgrey: #9BA0AA;
 $white: #D9D9D9;
 
+.calculations{
+  padding-bottom: 2vh;
+  display: none;
+}
 #chanceBox{
   font-size: 18px;
 }
@@ -122,6 +126,33 @@ E.g.: ohl1 means opponent hand left 1
   grid-template-columns: repeat(2, 1fr);
 }
 
+#percentages {
+  display: inline-grid;
+  grid-template-rows: repeat(10, 1fr);
+  width: 7%;
+  color: $white;
+}
+
+#percentage1{
+  grid-row: 1;
+}
+
+#percentage2{
+  grid-row: 3;
+}
+
+#percentage3{
+  grid-row: 5;
+}
+
+#percentage4{
+  grid-row: 7;
+}
+
+#percentage5{
+  grid-row: 9;
+}
+
 /* Poker table */
 #pokerTable {
   height: 48vh;
@@ -180,11 +211,11 @@ E.g.: ohl1 means opponent hand left 1
 }
 
 #tableCards{
-  width: 60%;
+  width: 52%;
 }
 
 .tableCards{
-  width: 14%;
+  width: 15%;
   padding-left: 2vh;
 }
 

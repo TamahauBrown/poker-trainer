@@ -1,4 +1,5 @@
 // import VolumeUp from '@mui/icons-material/VolumeUp';
+import Slider from '@mui/material/Slider';
 import {styled} from "@mui/material/styles";
 import MuiInput from "@mui/material/Input";
 import Box from "@mui/material/Box";
@@ -12,7 +13,7 @@ const Input = styled(MuiInput)`
   width: 42px;
 `;
 
-export function Slider() {
+export function ChancesSlider() {
     const [value, setValue] = React.useState<number | string | Array<number | string>>(
         30,
     );
@@ -32,6 +33,7 @@ export function Slider() {
             setValue(100);
         }
     };
+
     return(
         <div id="sliderFunctions">
             <Box sx={{width: 500}} className="slider">

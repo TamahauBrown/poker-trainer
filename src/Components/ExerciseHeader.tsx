@@ -8,28 +8,66 @@ export function ExerciseHeader() {
 
     function hands(res) {
         var entries = Object.entries(res);
-        //board = entries[0][1][0];
-        //opp_hands = entries[2][1][0];
-        player_cards(entries);
+        board_cards(entries[0][1]);
+        opponent_cards(entries[2][1][0]);
+        player_cards(entries[3][1]);
     }
 
+    /*
+        This will break if BE passes more than 2 values
+     */
     function player_cards(entries){
-        //Player hands
-        console.log(entries[3]);
-        const left = entries[3][1][0];
-        const right = entries[3][1][1];
-
-        //Left player hand
-        entries = Object.entries(left);
-        full_path = image_path + entries[0][1].toString().toLowerCase() + "_" + entries[1][1].toString().toLowerCase() + svg;
-        const leftCard = document.getElementById("leftCard") as HTMLImageElement;
-        leftCard.src = full_path;
-        //Right player hand
-        entries = Object.entries(right);
-        full_path = image_path + entries[0][1].toString().toLowerCase() + "_" + entries[1][1].toString().toLowerCase() + svg;
-        const rightCard = document.getElementById("rightCard") as HTMLImageElement;
-        rightCard.src = full_path;
+        let cards = ["leftCard", "rightCard"];
+        let i = 0;
+        entries.forEach(function (value) {
+            entries = Object.entries(value);
+            full_path = image_path + entries[0][1].toString().toLowerCase() + "_" + entries[1][1].toString().toLowerCase() + svg;
+            let playerCard = document.getElementById(cards[i]) as HTMLImageElement;
+            playerCard.src = full_path;
+            i++;
+        });
     }
+
+    function board_cards(entries){
+        let cards = ["flop1", "flop2", "flop3", "turn", "river"]
+        //Check for length and proceed accordingly
+            let i = 0;
+            entries.forEach(function (value) {
+                entries = Object.entries(value);
+                full_path = image_path + entries[0][1].toString().toLowerCase() + "_" + entries[1][1].toString().toLowerCase() + svg;
+                let boardCard = document.getElementById(cards[i]) as HTMLImageElement;
+                boardCard.src = full_path;
+                i++;
+            });
+
+        }
+
+        function opponent_cards(entries){
+        let cards = ["ohl3", "ohr3", "ohl2", "ohr2", "ohl4", "ohr4", "ohl1", "ohr1", "ohl5", "ohr5"];
+        let percentages = ["percentage3", "percentage4", "percentage2", "percentage1", "percentage5"];
+            for(let i = entries.length; i < cards.length; i++) {
+                document.getElementById(cards[i]).style.display = "none";
+            }
+            let i = 0;
+            let j = 0;
+            entries.forEach(function(value) {
+                //let calculateWidth = 180 - Math.abs(i - cards.length) / ; BACKLOG
+                document.getElementById(cards[i]).style.display = "block";
+
+                entries = Object.entries(value);
+                full_path = image_path + entries[0][1].toString().toLowerCase() + "_" + entries[1][1].toString().toLowerCase() + svg;
+                //document.getElementById(cards[i]).style.width = calculateWidth.toString();
+                let opponentCard = document.getElementById(cards[i]) as HTMLImageElement;
+                opponentCard.src = full_path;
+                if(i % 2 === 0) {
+                    document.getElementById(percentages[j]).style.display = "block";
+                    j++;
+                }
+                i++;
+            });
+
+        }
+
 
     function equity_estimate() {
         let result = invoke('equity_estimate', {});
