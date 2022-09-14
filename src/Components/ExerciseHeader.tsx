@@ -72,6 +72,7 @@ export function ExerciseHeader() {
 
 
     function equity_estimate() {
+        document.getElementById("chances").innerText = "What are your chances of winning?";
         let result = invoke('equity_estimate', {});
         result.then(res => {
             //Where do I store this value now?
