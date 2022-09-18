@@ -11,8 +11,22 @@ export function ExerciseHeader() {
     const image_path = "./Images/fronts/";
     const svg = ".svg";
 
+    function equity_estimate() {
+        document.getElementById("chances").innerText = "What are your chances of winning?";
+        let result = invoke('equity_estimate', {});
+        result.then(res => {
+            let cards: EquityResponse = {
+                board: (res as any).board,
+                opponent_hands: (res as any).opponent_hands,
+                equity: (res as any).equity * 100,
+                player_hand: (res as any).player_hand,
+            };
+            display_hands(cards);
+            res.equity = cards.equity;
+        });
+    }
 
-    function hands(cards) {
+    function display_hands(cards) {
         player_cards(cards.player_hand);
         board_cards(cards.board);
         opponent_cards(cards.opponent_hands);
@@ -70,23 +84,6 @@ export function ExerciseHeader() {
         )
         ;
 
-    }
-
-
-    function equity_estimate() {
-
-        document.getElementById("chances").innerText = "What are your chances of winning?";
-        let result = invoke('equity_estimate', {});
-        result.then(res => {
-            let cards: EquityResponse = {
-                board: (res as any).board,
-                opponent_hands: (res as any).opponent_hands,
-                equity: (res as any).equity * 100,
-                player_hand: (res as any).player_hand,
-            };
-            hands(cards);
-            equity = cards.equity;
-        });
     }
 
     return (
