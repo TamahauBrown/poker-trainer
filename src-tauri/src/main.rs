@@ -57,3 +57,18 @@ fn equity_estimate() -> EquityEstimateResponse {
   ans.equity = poker_lib::exact_equity_from_input(ans.player_hand, ans.opponent_hands[0], &ans.board);
   ans
 }
+
+
+#[tauri::command]
+fn equity_estimate_2() -> EquityEstimateResponse {
+  let mut deck = CardDeck::new().unwrap();
+
+  let mut ans = EquityEstimateResponse {
+    board: deck.deal_cards(3).0.unwrap(),
+    player_hand: Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
+    opponent_hands: vec![Hand::from_vec(&deck.deal_cards(2).0.unwrap())],
+    equity: 0.0,
+  };
+  ans.equity = poker_lib::exact_equity_from_input(ans.player_hand, ans.opponent_hands[0], &ans.board);
+  ans
+}

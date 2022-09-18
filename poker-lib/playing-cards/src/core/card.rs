@@ -228,13 +228,24 @@ impl std::fmt::Display for Suit {
 }
 
 /// A structural representation of a playing card.
-#[derive(Deserialize, Debug, PartialEq, Clone, Copy, Serialize)]
+#[derive(Deserialize, Debug, PartialEq, Clone, Copy)]
 #[serde(try_from = "String")]
 pub struct Card {
     /// The Value of the Card
     pub value: Value,
     /// The Suit of the Card
     pub suit: Suit,
+}
+
+impl Serialize for Card {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer {
+        serializer.serialize_str(
+            &format!("{:?}_{:?}", 
+            self.suit, 
+            self.value).to_lowercase())
+    }
 }
 
 impl Card {
