@@ -41,3 +41,5 @@ Material UI (MUI) - slider property
 [1] React and Tauri tutorial https://kent.medium.com/get-started-making-desktop-apps-using-rust-and-react-78a7e07433ce
 
 [2] Figma HiFi prototype https://www.figma.com/file/wVPzM362Fnxi7RioXzfDTw/Poker-Screens-LowFi?node-id=0%3A1
+
+[3] Lucidchart https://lucid.app/lucidchart/d9dfc87f-d217-442b-8be1-1efa0379648d/edit?page=0_0&invitationId=inv_44ce8f6b-4457-4f9d-a4c3-c24a6232e428#
