@@ -71,7 +71,7 @@ struct EquityEstimateUserInputResponse {
 
 #[tauri::command]
 fn equity_estimate_user_input(user_input: f64) -> EquityEstimateUserInputResponse {
-  let true_equity = LAST_EQUITY.lock().unwrap().unwrap_or(0);
+  let true_equity = LAST_EQUITY.lock().unwrap().unwrap_or(0.0);
   
   let ans = EquityEstimateUserInputResponse {
     true_equity,
