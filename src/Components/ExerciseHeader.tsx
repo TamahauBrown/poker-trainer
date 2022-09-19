@@ -22,7 +22,7 @@ export function ExerciseHeader() {
                 player_hand: (res as any).player_hand,
             };
             display_hands(cards);
-            res.equity = cards.equity;
+            equity = cards.equity;
         });
     }
 
