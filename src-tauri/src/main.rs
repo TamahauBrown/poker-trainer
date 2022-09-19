@@ -3,6 +3,8 @@
   windows_subsystem = "windows"
 )]
 
+use std::sync::Mutex;
+
 use poker_lib::Hand;
 use strum::EnumIter;
 use strum::IntoEnumIterator;
@@ -10,6 +12,8 @@ use serde::{Serialize, Deserialize};
 use poker_lib::CardDeck;
 use tauri::Manager;
 use tauri::PhysicalSize;
+
+const LAST_EQUITY: Mutex<Option<f64>> = Mutex::new(None);
 
 fn main() {
   tauri::Builder::default()
@@ -41,7 +45,7 @@ struct EquityEstimateResponse {
   // TODO: Not too sure if we should be adding probability here
   opponent_hands: Vec<poker_lib::Hand>,
   board: Vec<poker_lib::Card>,
-  equity: f64,
+  // equity: f64,
 }
 
 #[tauri::command]
@@ -52,8 +56,26 @@ fn equity_estimate() -> EquityEstimateResponse {
     board: deck.deal_cards(3).0.unwrap(),
     player_hand: Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
     opponent_hands: vec![Hand::from_vec(&deck.deal_cards(2).0.unwrap())],
-    equity: 0.0,
+    // equity: 0.0,
   };
-  ans.equity = poker_lib::exact_equity_from_input(ans.player_hand, ans.opponent_hands[0], &ans.board);
+  let answer_equity = poker_lib::exact_equity_from_input(ans.player_hand, ans.opponent_hands[0], &ans.board);
+  *LAST_EQUITY.lock().unwrap() = Some(answer_equity);
+  ans
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct EquityEstimateUserInputResponse {
+  true_equity: f64,
+  close_enough: bool,
+}
+
+#[tauri::command]
+fn equity_estimate_user_input(user_input: f64) -> EquityEstimateUserInputResponse {
+  let true_equity = LAST_EQUITY.lock().unwrap().unwrap();
+  
+  let ans = EquityEstimateUserInputResponse {
+    true_equity,
+    close_enough: (user_input - true_equity).abs() < 0.1,
+  };
   ans
 }
