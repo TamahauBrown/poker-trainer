@@ -24,7 +24,7 @@ fn main() {
       main_window.set_resizable(false).unwrap();
       Ok(())
     })
-    .invoke_handler(tauri::generate_handler![get_exercises, equity_estimate])
+    .invoke_handler(tauri::generate_handler![get_exercises, equity_estimate, equity_estimate_user_input])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
