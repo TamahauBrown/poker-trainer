@@ -92,7 +92,7 @@ export function ExerciseHeader() {
             <div className="exShape" id="ex2"> </div>
             <div className="exShape" id="ex3"> </div>
             <div className="exShape" id="ex4"> </div>
-            <div className="exerciseText" id="ex1text">Equity Estimate</div>
+            <div className="exerciseText" id="ex1text">Chances of winning</div>
             <div className="exerciseText" id="ex2text">Exercise 2</div>
             <div className="exerciseText" id="ex3text">Exercise 3</div>
             <div className="exerciseText" id="ex4text">Exercise 4</div>

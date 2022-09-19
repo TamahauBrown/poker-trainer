@@ -77,8 +77,12 @@ $white: #D9D9D9;
   background-color: #045611;
 }
 
+#homeIcon {
+  grid-row: 2;
+}
+
 #logo{
-  padding: 1vh 0 0 25%;
+  grid-row: 1;
 }
 
 /*
@@ -194,12 +198,22 @@ E.g.: ohl1 means opponent hand left 1
   margin-left: 2vh;
 }
 
+#sendIcon {
+  grid-row: 3;
+}
+
 /* Sidebar */
 .sidebar {
   width: 3%;
   background: #3A3A3C;
+  display: inline-grid;
+  grid-template-rows: repeat(20, 1fr);
 }
 
+.sidebarItem {
+  margin: 0 auto;
+  padding-top: 10%;
+}
 .slider{
   width: 33%;
   text-align: center;
@@ -212,6 +226,9 @@ E.g.: ohl1 means opponent hand left 1
   display: inline-flex;
 }
 
+#star-icon {
+  grid-row: 4;
+}
 
 #submitGuess {
   font-size: 14px;
