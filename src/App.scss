@@ -11,15 +11,16 @@
   width: 97%;
 }
 
-.calculations{
+.calculations {
   display: none;
 }
-#chanceBox{
+
+#chanceBox {
   font-size: $medium;
   color: $white;
 }
 
-#chances{
+#chances {
   font-size: $large;
   color: $white;
 }
@@ -61,7 +62,7 @@
   height: 15vh;
   width: 10vw;
   background: $white;
-  margin: 0 auto;
+  margin: $marginCenter;
   border-radius: $borderHeader;
   box-shadow: $grey 5px 1px;
   border: 1px solid $grey;
@@ -78,7 +79,7 @@
   grid-row: 2;
 }
 
-#logo{
+#logo {
   grid-row: 1;
 }
 
@@ -89,43 +90,43 @@ l: left, r: right
 1-5: the number of the hand it follows
 E.g.: ohl1 means opponent hand left 1
  */
-#ohl1{
+#ohl1 {
   grid-row: 1;
 }
 
-#ohr1{
+#ohr1 {
   grid-row: 1;
 }
 
-#ohl2{
+#ohl2 {
   grid-row: 3;
 }
 
-#ohr2{
+#ohr2 {
   grid-row: 3;
 }
 
-#ohl3{
+#ohl3 {
   grid-row: 5;
 }
 
-#ohr3{
+#ohr3 {
   grid-row: 5;
 }
 
-#ohl4{
+#ohl4 {
   grid-row: 7;
 }
 
-#ohr4{
+#ohr4 {
   grid-row: 7;
 }
 
-#ohl5{
+#ohl5 {
   grid-row: 9;
 }
 
-#ohr5{
+#ohr5 {
   grid-row: 9;
 }
 
@@ -133,7 +134,7 @@ E.g.: ohl1 means opponent hand left 1
   width: 10%;
 }
 
-#oppCards{
+#oppCards {
   display: inline-grid;
   grid-template-rows: $grid-rows;
   grid-template-columns: repeat(2, 1fr);
@@ -146,23 +147,23 @@ E.g.: ohl1 means opponent hand left 1
   color: $white;
 }
 
-#percentage1{
+#percentage1 {
   grid-row: 1;
 }
 
-#percentage2{
+#percentage2 {
   grid-row: 3;
 }
 
-#percentage3{
+#percentage3 {
   grid-row: 5;
 }
 
-#percentage4{
+#percentage4 {
   grid-row: 7;
 }
 
-#percentage5{
+#percentage5 {
   grid-row: 9;
 }
 
@@ -178,7 +179,7 @@ E.g.: ohl1 means opponent hand left 1
   display: inline-flex;
 }
 
-#playerCards{
+#playerCards {
   width: 25%;
   padding-left: 4vh;
 }
@@ -186,7 +187,7 @@ E.g.: ohl1 means opponent hand left 1
 /* Playing cards */
 .playerCards {
   width: 33%;
-  border: 3px solid $lightgrey;
+  border: $cardBorder $lightgrey;
   border-radius: $cards;
 }
 
@@ -208,11 +209,11 @@ E.g.: ohl1 means opponent hand left 1
 }
 
 .sidebarItem {
-  margin: 0 auto;
+  margin: $marginCenter;
   padding-top: 10%;
 }
 
-.slider{
+.slider {
   width: 33%;
   text-align: center;
 }
@@ -230,19 +231,18 @@ E.g.: ohl1 means opponent hand left 1
 
 #submitGuess {
   font-size: $small;
-  margin-left: 3vh;
   border-radius: $button;
   padding-top: 1.5%;
 }
 
-#tableCards{
+#tableCards {
   width: 52%;
 }
 
-.tableCards{
+.tableCards {
   width: 15%;
   margin-left: 2vh;
-  border: 3px solid $black;
+  border: $cardBorder $black;
   border-radius: $cards;
 }
 
@@ -257,11 +257,10 @@ E.g.: ohl1 means opponent hand left 1
 /* Multiple elements affected */
 .hand1, .hand2, .hand3, .hand4, .hand5 {
   width: 90%;
-  border: 2px solid $black;
+  border: $cardBorder $black;
   border-radius: $cards;
 }
 
 #playerCards, #tableCards {
   margin-top: 10%;
 }
-
