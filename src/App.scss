@@ -65,12 +65,12 @@
   margin: $marginCenter;
   border-radius: $borderHeader;
   box-shadow: $grey 5px 1px;
-  border: 1px solid $grey;
+  border: 3px solid $black;
   justify-content: center;
 }
 
 #floor {
-  height: 79vh;
+  height: 78.5vh;
   width: 100%;
   background-color: $floor;
 }
