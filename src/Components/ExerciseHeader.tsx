@@ -88,7 +88,7 @@ export function ExerciseHeader() {
 
     return (
         <div className="exercise">
-            <div className="exShape" id="ex1" onClick={equity_estimate}> </div>
+            <img src={"../Exercises/equity-estimate.png"} className="exShape" id="ex1" onClick={equity_estimate} />
             <div className="exShape" id="ex2"> </div>
             <div className="exShape" id="ex3"> </div>
             <div className="exShape" id="ex4"> </div>
