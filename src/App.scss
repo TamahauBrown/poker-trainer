@@ -88,7 +88,6 @@
   height: 86vh;
   width: 100%;
   background-color: $floor;
-  display: block;
 }
 
 #homeIcon {
@@ -303,6 +302,10 @@ E.g.: ohl1 means opponent hand left 1
   width: 90%;
   border: $cardBorder $black;
   border-radius: $cards;
+}
+
+.hand1, .hand2, .hand3, .hand4, .hand5, .playerCards, .tableCards {
+  opacity: 0;
 }
 
 /* #playerCards, #tableCards {

@@ -42,6 +42,7 @@ export function ExerciseHeader() {
             full_path = image_path + card.suit + "_" + card.value + svg;
             let playerCard = document.getElementById(cards[i]) as HTMLImageElement;
             playerCard.src = full_path;
+            playerCard.style.opacity = "100%";
             i++;
         });
     }
@@ -53,6 +54,7 @@ export function ExerciseHeader() {
             full_path = image_path + card.suit + "_" + card.value + svg;
             let boardCard = document.getElementById(cards[i]) as HTMLImageElement;
             boardCard.src = full_path;
+            boardCard.style.opacity = "100%";
             i++;
         });
 
@@ -68,11 +70,12 @@ export function ExerciseHeader() {
         // let j = 0;
         entries.forEach(function (hand) {
                 hand.forEach(function (card) {
-                    //let calculateWidth = 180 - Math.abs(i - cards.length) / ; BACKLOG
+                    //let calculateWidth = 180 - 90 /  (10 - (cards.length - hand.length)); //REX TODO: Come up with a better math forumla here for opponent card sizes, 90% is all 5 cards, 180% is for 1 pair of cards.
                     document.getElementById(cards[i]).style.display = "block";
+                    document.getElementById(cards[i]).style.opacity = "100%";
                     full_path = image_path + card.suit + "_" + card.value + svg;
-                    //document.getElementById(cards[i]).style.width = calculateWidth.toString(); Backlog with the calculateWidth
                     let opponentCard = document.getElementById(cards[i]) as HTMLImageElement;
+                    //opponentCard.style.width = calculateWidth.toString() + "%";
                     opponentCard.src = full_path;
                     //if(i % 2 === 0) {
                     //document.getElementById(percentages[j]).style.display = "block";
