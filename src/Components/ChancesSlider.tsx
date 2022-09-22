@@ -67,6 +67,7 @@ export function ChancesSlider() {
                     </Grid>
                     <Grid item>
                         <Input
+                            disableUnderline={true}
                             id="chanceBox"
                             value={value}
                             size="small"
@@ -78,6 +79,7 @@ export function ChancesSlider() {
                                 max: 100,
                                 type: 'number',
                                 'aria-labelledby': 'input-slider',
+
                             }}
                         />
                     </Grid>
