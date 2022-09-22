@@ -8,16 +8,20 @@ import {PlayerCards} from "./PlayerCards.tsx";
 import {TableCards} from "./TableCards.tsx";
 // @ts-ignore
 import {OpponentCards} from "./OpponentCards.tsx";
+// @ts-ignore
+import {Percentages} from "./Percentages.tsx";
 
 export function PokerTable() {
     return (
         <div id="floor">
+            <div id={"padding"} />
             <div id="pokerTable">
                 <div id="innerTableBorder">
                 <div id="mainTable">
                 <TableCards/>
                     <PlayerCards />
                 </div>
+                <Percentages />
                 <OpponentCards/>
             </div>
             </div>

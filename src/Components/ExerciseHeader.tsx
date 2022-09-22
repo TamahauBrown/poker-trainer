@@ -87,15 +87,23 @@ export function ExerciseHeader() {
     }
 
     return (
-        <div className="exercise">
-            <img src={"../Exercises/equity-estimate.png"} className="exShape" id="ex1" onClick={equity_estimate} />
-            <div className="exShape" id="ex2"> </div>
-            <div className="exShape" id="ex3"> </div>
-            <div className="exShape" id="ex4"> </div>
-            <div className="exerciseText" id="ex1text">Chances</div>
-            <div className="exerciseText" id="ex2text">Exercise 2</div>
-            <div className="exerciseText" id="ex3text">Exercise 3</div>
-            <div className="exerciseText" id="ex4text">Exercise 4</div>
+        <div id="exercise">
+            <div className="exItem">
+                <img src={"../Exercises/equity-estimate.png"} className="exShape" id="ex1" onClick={equity_estimate}/>
+                <div className="exerciseText" id="ex1text">Chances</div>
+            </div>
+            <div className="exItem">
+                <div className="exShape" id="ex2" />
+                <div className="exerciseText" id="ex2text">Ex 2</div>
+            </div>
+            <div className="exItem">
+                <div className="exShape" id="ex3" />
+                <div className="exerciseText" id="ex3text">Ex 3</div>
+            </div>
+            <div className="exItem">
+                <div className="exShape" id="ex4" />
+                <div className="exerciseText" id="ex4text">Ex 4</div>
+            </div>
         </div>
     );
 }

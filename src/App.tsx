@@ -15,7 +15,6 @@ function App() {
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&display=swap" rel="stylesheet"/>
             <Sidebar />
             <header className="App-header">
-
                 <ExerciseHeader />
                 <PokerTable />
             </header>
