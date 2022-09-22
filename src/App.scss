@@ -132,6 +132,7 @@ E.g.: ohl1 means opponent hand left 1
 
 #oppCards {
   width: 10%;
+  margin: 1% 2% 0 0;
 }
 
 #oppCards {
@@ -167,6 +168,20 @@ E.g.: ohl1 means opponent hand left 1
   grid-row: 9;
 }
 
+#playerCards {
+  width: 100%;
+  height: 20%;
+  text-align: center;
+  margin-top: 2%;
+}
+
+/* Playing cards */
+.playerCards {
+  width: 8%;
+  /* border: $cardBorder $lightgrey; */
+  border-radius: $cards;
+}
+
 /* Poker table */
 #pokerTable {
   height: 60%;
@@ -176,20 +191,14 @@ E.g.: ohl1 means opponent hand left 1
   border-radius: $table;
   border: 40px solid $black;
   padding: 3vh 0 3vh 0;
-  display: inline-flex;
 }
 
-#playerCards {
-  width: 25%;
-  padding-left: 4vh;
+#PokerTrainerLabel {
+  position: absolute;
+  z-index: -1;
 }
 
-/* Playing cards */
-.playerCards {
-  width: 33%;
-  border: $cardBorder $lightgrey;
-  border-radius: $cards;
-}
+
 
 /* All the cards */
 #rightCard {
@@ -236,12 +245,14 @@ E.g.: ohl1 means opponent hand left 1
 }
 
 #tableCards {
-  width: 52%;
+  width: 77%;
+  height: 75%;
+  margin: 5% 0 0 10%;
 }
 
 .tableCards {
   width: 15%;
-  margin-left: 2vh;
+  margin: 1%;
   border: $cardBorder $black;
   border-radius: $cards;
 }
@@ -261,6 +272,24 @@ E.g.: ohl1 means opponent hand left 1
   border-radius: $cards;
 }
 
-#playerCards, #tableCards {
+#mainTable {
+  width: 100%;
+  height: 75%;
+  /* border: 2px solid $black; */
+  margin: 1% 1% 0 1%;
+  border-radius: $borderHeader;
+  display: flex;
+  flex-direction: column;
+}
+/* #playerCards, #tableCards {
   margin-top: 10%;
+}*/
+
+#innerTableBorder {
+  width: 98%;
+  height: 98%;
+  border: 2px solid black;
+  margin-left: 1%;
+  border-radius: $borderHeader;
+  display: flex;
 }
