@@ -19,6 +19,7 @@
 #chanceBox {
   font-size: $medium;
   color: $white;
+  padding: 4px 0 10px;
 }
 
 #chances {
@@ -273,7 +274,7 @@ E.g.: ohl1 means opponent hand left 1
 #submitGuess {
   font-size: $small;
   border-radius: $button;
-  padding-top: 1.5%;
+  padding: 1.5% 0 0 1%;
 }
 
 #tableCards {

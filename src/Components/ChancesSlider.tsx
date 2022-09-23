@@ -69,7 +69,7 @@ export function ChancesSlider() {
                         <Input
                             disableUnderline={true}
                             id="chanceBox"
-                            value={value}
+                            value={value + "%"}
                             size="small"
                             onChange={handleInputChange}
                             onBlur={handleBlur}
@@ -77,7 +77,7 @@ export function ChancesSlider() {
                                 step: 10,
                                 min: 0,
                                 max: 100,
-                                type: 'number',
+                                type: 'text',
                                 'aria-labelledby': 'input-slider',
 
                             }}
@@ -86,7 +86,7 @@ export function ChancesSlider() {
                 </Grid>
             </Box>
             <div id="submitGuess">
-                <Button variant="contained" endIcon={<SendIcon/>} onClick={onSubmit}>
+                <Button variant="contained" onClick={onSubmit}>
                     SUBMIT
                 </Button>
             </div>
