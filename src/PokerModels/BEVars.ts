@@ -11,6 +11,14 @@ export interface EquityResponse{
 
 export type Hand = [Card, Card];
 
+export type Board = [number, State];
+
+enum State {
+    Flop,
+    River,
+    Turn
+}
+
 /*
     Creates a card with the relevant values
 */

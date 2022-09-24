@@ -39,8 +39,6 @@ export function ChancesSlider() {
 
     const onSubmit = () => {
         let chancesText = document.getElementById("chances");
-        console.log(equity);
-        //console.log(value);
         if(value === Math.round(equity)) {
             chancesText.innerText = "Correct, your chances are " + Math.round(equity) + "%";
         }
