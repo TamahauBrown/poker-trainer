@@ -20,7 +20,7 @@ fn main() {
       main_window.set_resizable(false).unwrap();
       Ok(())
     })
-    .invoke_handler(tauri::generate_handler![get_exercises, equity_estimate])
+    .invoke_handler(tauri::generate_handler![get_exercises, equity_estimate, equity_estimate_2, equity_estimate_3])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
@@ -52,6 +52,38 @@ fn equity_estimate() -> EquityEstimateResponse {
     board: deck.deal_cards(3).0.unwrap(),
     player_hand: Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
     opponent_hands: vec![Hand::from_vec(&deck.deal_cards(2).0.unwrap())],
+    equity: 0.0,
+  };
+  ans.equity = poker_lib::exact_equity_from_input(ans.player_hand, ans.opponent_hands[0], &ans.board);
+  ans
+}
+
+#[tauri::command]
+fn equity_estimate_2() -> EquityEstimateResponse {
+  let mut deck = CardDeck::new().unwrap();
+
+  let mut ans = EquityEstimateResponse {
+    board: deck.deal_cards(4).0.unwrap(),
+    player_hand: Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
+    // Rex TODO: Clean this up
+    opponent_hands: vec![Hand::from_vec(&deck.deal_cards(2).0.unwrap()), Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
+    Hand::from_vec(&deck.deal_cards(2).0.unwrap())],
+    equity: 0.0,
+  };
+  ans.equity = poker_lib::exact_equity_from_input(ans.player_hand, ans.opponent_hands[0], &ans.board);
+  ans
+}
+
+#[tauri::command]
+fn equity_estimate_3() -> EquityEstimateResponse {
+  let mut deck = CardDeck::new().unwrap();
+
+  let mut ans = EquityEstimateResponse {
+    board: deck.deal_cards(5).0.unwrap(),
+    player_hand: Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
+    // Rex TODO: Clean this up
+    opponent_hands: vec![Hand::from_vec(&deck.deal_cards(2).0.unwrap()), Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
+    Hand::from_vec(&deck.deal_cards(2).0.unwrap()), Hand::from_vec(&deck.deal_cards(2).0.unwrap()), Hand::from_vec(&deck.deal_cards(2).0.unwrap())],
     equity: 0.0,
   };
   ans.equity = poker_lib::exact_equity_from_input(ans.player_hand, ans.opponent_hands[0], &ans.board);

@@ -11,19 +11,24 @@ export function ExerciseHeader() {
     const image_path = "./Images/fronts/";
     const svg = ".svg";
 
-    function equity_estimate() {
+    function equity_estimate(exercise : string) {
         document.getElementById("chances").innerText = "What are your chances of winning?";
-        let result = invoke('equity_estimate', {});
+        console.log("Entering " + exercise);
+        let result = invoke(exercise, {});
         result.then(res => {
-            let cards: EquityResponse = {
-                board: (res as any).board,
-                opponent_hands: (res as any).opponent_hands,
-                equity: (res as any).equity * 100,
-                player_hand: (res as any).player_hand,
-            };
-            display_hands(cards);
-            equity = cards.equity;
+            equity_response(res);
         });
+    }
+
+    function equity_response(res) {
+        let cards: EquityResponse = {
+            board: (res as any).board,
+            opponent_hands: (res as any).opponent_hands,
+            equity: (res as any).equity * 100,
+            player_hand: (res as any).player_hand,
+        };
+        display_hands(cards);
+        equity = cards.equity;
     }
 
     function display_hands(cards) {
@@ -50,6 +55,9 @@ export function ExerciseHeader() {
     function board_cards(entries) {
         let cards = ["flop1", "flop2", "flop3", "turn", "river"]
         let i = 0;
+        for (let i = entries.length; i < cards.length; i++) {
+            document.getElementById(cards[i]).style.opacity = "0%";
+        }
         entries.forEach(function (card) {
             full_path = image_path + card.suit + "_" + card.value + svg;
             let boardCard = document.getElementById(cards[i]) as HTMLImageElement;
@@ -64,14 +72,14 @@ export function ExerciseHeader() {
         let cards = ["ohl3", "ohr3", "ohl2", "ohr2", "ohl4", "ohr4", "ohl1", "ohr1", "ohl5", "ohr5"];
         //let percentages = ["percentage3", "percentage4", "percentage2", "percentage1", "percentage5"];
         for (let i = entries.length; i < cards.length; i++) {
-            document.getElementById(cards[i]).style.display = "none";
+            document.getElementById(cards[i]).style.opacity = "0%";
         }
         let i = 0;
         // let j = 0;
         entries.forEach(function (hand) {
                 hand.forEach(function (card) {
                     //let calculateWidth = 180 - 90 /  (10 - (cards.length - hand.length)); //REX TODO: Come up with a better math forumla here for opponent card sizes, 90% is all 5 cards, 180% is for 1 pair of cards.
-                    document.getElementById(cards[i]).style.display = "block";
+                    // document.getElementById(cards[i]).style.display = "block";
                     document.getElementById(cards[i]).style.opacity = "100%";
                     full_path = image_path + card.suit + "_" + card.value + svg;
                     let opponentCard = document.getElementById(cards[i]) as HTMLImageElement;
@@ -92,16 +100,16 @@ export function ExerciseHeader() {
     return (
         <div id="exercise">
             <div className="exItem">
-                <img src={"../Exercises/equity-estimate.png"} className="exShape" id="ex1" onClick={equity_estimate}/>
+                <img src={"../Exercises/equity-estimate.png"} className="exShape" id="ex1" onClick={() => equity_estimate('equity_estimate')}/>
                 <div className="exerciseText" id="ex1text">Chances</div>
             </div>
             <div className="exItem">
-                <div className="exShape" id="ex2" />
-                <div className="exerciseText" id="ex2text">Ex 2</div>
+                <img src={"../Exercises/chances_2.png"} className="exShape" id="ex2" onClick={() => equity_estimate('equity_estimate_2')} />
+                <div className="exerciseText" id="ex2text" >Chances 2</div>
             </div>
             <div className="exItem">
-                <div className="exShape" id="ex3" />
-                <div className="exerciseText" id="ex3text">Ex 3</div>
+                <img src={"../Exercises/chances_3.png"} className="exShape" id="ex3" onClick={() => equity_estimate('equity_estimate_3')} />
+                <div className="exerciseText" id="ex3text" >Chances 3</div>
             </div>
             <div className="exItem">
                 <div className="exShape" id="ex4" />
