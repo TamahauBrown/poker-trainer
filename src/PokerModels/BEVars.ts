@@ -19,12 +19,4 @@ enum State {
     Turn
 }
 
-/*
-    Creates a card with the relevant values
-*/
-export interface Card {
-    suit: string;
-    value: string;
-}
-
-// export type Card = string; // this is for later
+export type Card = string;

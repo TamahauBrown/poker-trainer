@@ -111,7 +111,7 @@
 
 #mainTable {
   width: 80%;
-  height: 85%;
+  height: 65%;
   /* border: 2px solid $black; */
   margin: 1% 1% 0 18%;
   border-radius: $borderHeader;
@@ -175,7 +175,7 @@ E.g.: ohl1 means opponent hand left 1
 #oppCards {
   display: inline-grid;
   grid-template-rows: $grid-rows;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 50%);
 }
 
 #padding {
