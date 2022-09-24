@@ -1,20 +1,29 @@
-$black: #000000;
-$green: #007D1B;
-$grey: #888888;
-$lightgrey: #9BA0AA;
-$white: #D9D9D9;
+@import './SCSS/Colours';
+@import './SCSS/measurements';
+@import './SCSS/fonts';
 
-.calculations{
-  padding-bottom: 2vh;
+.App {
+  display: flex;
+  width: 100%;
+}
+
+.App-header {
+  width: 97%;
+  height: 100%;
+}
+
+.calculations {
   display: none;
 }
-#chanceBox{
-  font-size: 18px;
+
+#chanceBox {
+  font-size: $medium;
   color: $white;
+  padding: 4px 0 10px;
 }
 
-#chances{
-  font-size: 24px;
+#chances {
+  font-size: $large;
   color: $white;
 }
 
@@ -35,40 +44,79 @@ $white: #D9D9D9;
 }
 
 /* Exercise information */
-.exercise {
+#exercise {
   text-align: center;
-  display: inline-grid;
+  display: flex;
   padding-top: 4px;
   width: 100%;
+  height: 13.5vh;
+}
+
+.exItem {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 15%;
+  width: 8%;
+  height: 15vh;
+  align-items: center;
+}
+
+.exItem:hover {
+  height: 60vh;
 }
 
 .exerciseText {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: $Noto;
   font-style: normal;
   font-weight: 600;
-  font-size: 40px;
+  font-size: $headerText;
   line-height: 48px;
   color: $black;
 }
 
 .exShape {
-  height: 15vh;
-  width: 10vw;
+  height: 8vh;
+  width: 100%;
   background: $white;
-  margin: 0 auto;
-  border-radius: 30px;
-  box-shadow: $grey 5px 1px;
-  border: 1px solid $grey;
+  margin: $marginCenter;
+  border-radius: $borderHeader;
+  box-shadow: $grey 5px 3px;
+  border: 0.1px solid $black;
+  justify-content: center;
 }
 
 #floor {
-  height: 79vh;
+  height: 86vh;
   width: 100%;
-  background-color: #045611;
+  background-color: $floor;
 }
 
-#logo{
-  padding: 1vh 0 0 25%;
+#homeIcon {
+  grid-row: 2;
+}
+
+#innerTableBorder {
+  width: 98%;
+  height: 100%;
+  border: 2px solid black;
+  margin-left: 1%;
+  border-radius: $borderHeader;
+  display: flex;
+}
+
+#logo {
+  grid-row: 1;
+}
+
+#mainTable {
+  width: 80%;
+  height: 85%;
+  /* border: 2px solid $black; */
+  margin: 1% 1% 0 18%;
+  border-radius: $borderHeader;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 /*
@@ -78,165 +126,190 @@ l: left, r: right
 1-5: the number of the hand it follows
 E.g.: ohl1 means opponent hand left 1
  */
-#ohl1{
+#ohl1 {
   grid-row: 1;
 }
 
-#ohr1{
+#ohr1 {
   grid-row: 1;
 }
 
-#ohl2{
+#ohl2 {
   grid-row: 3;
 }
 
-#ohr2{
+#ohr2 {
   grid-row: 3;
 }
 
-#ohl3{
+#ohl3 {
   grid-row: 5;
 }
 
-#ohr3{
+#ohr3 {
   grid-row: 5;
 }
 
-#ohl4{
+#ohl4 {
   grid-row: 7;
 }
 
-#ohr4{
+#ohr4 {
   grid-row: 7;
 }
 
-#ohl5{
+#ohl5 {
   grid-row: 9;
 }
 
-#ohr5{
+#ohr5 {
   grid-row: 9;
 }
 
 #oppCards {
   width: 10%;
+  margin: 1% 2% 1% 0;
 }
 
-#oppCards{
+#oppCards {
   display: inline-grid;
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-rows: $grid-rows;
   grid-template-columns: repeat(2, 1fr);
+}
+
+#padding {
+  height: 3%;
 }
 
 #percentages {
   display: inline-grid;
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-rows: $grid-rows;
   width: 7%;
   color: $white;
 }
 
-#percentage1{
+#percentage1 {
   grid-row: 1;
 }
 
-#percentage2{
+#percentage2 {
   grid-row: 3;
 }
 
-#percentage3{
+#percentage3 {
   grid-row: 5;
 }
 
-#percentage4{
+#percentage4 {
   grid-row: 7;
 }
 
-#percentage5{
+#percentage5 {
   grid-row: 9;
 }
 
-/* Poker table */
-#pokerTable {
-  height: 48vh;
-  width: 80vw;
-  background: $green;
-  margin: 4vh auto 0 8%;
-  border-radius: 100px;
-  border: 40px solid $black;
-  padding: 3vh 0 3vh 0;
-  display: inline-flex;
-}
-
-#playerCards{
-  width: 25%;
-  padding-left: 4vh;
+#playerCards {
+  width: 100%;
+  height: 20%;
+  text-align: center;
+  margin-top: 2%;
 }
 
 /* Playing cards */
 .playerCards {
-  width: 33%;
+  width: 11%;
+  /* border: $cardBorder $lightgrey; */
+  border-radius: $cards;
+}
+
+/* Poker table */
+#pokerTable {
+  height: 60%;
+  width: 80%;
+  background: $green;
+  margin: 0 auto 0 6%;
+  border-radius: $table;
+  border: 40px solid $black;
+  padding: 3vh 0 3vh 0;
 }
 
 /* All the cards */
 #rightCard {
-  padding-left: 2vh;
+  margin-left: 2vh;
+}
+
+#sendIcon {
+  grid-row: 3;
 }
 
 /* Sidebar */
 .sidebar {
-  position: fixed;
-  width: 2.5vw;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background: #3A3A3C;
+  width: 3%;
+  background: $sidebar;
+  display: inline-grid;
+  grid-template-rows: repeat(20, 1fr);
 }
 
-.slider{
+.sidebarItem {
+  margin: $marginCenter;
+  padding-top: 10%;
+}
+
+.slider {
   width: 33%;
   text-align: center;
 }
 
 #sliderFunctions {
-  padding-top: 2vh;
-  padding-left: 40%;
-  width: 60%;
+  padding-top: 4%;
+  justify-content: center;
+  width: 100%;
   display: inline-flex;
 }
 
+#star-icon {
+  grid-row: 4;
+}
 
 #submitGuess {
-  font-size: 14px;
-  margin-left: 3vh;
-  border-radius: 7px;
-  padding-top: 2vh;
+  font-size: $small;
+  border-radius: $button;
+  padding: 1.5% 0 0 1%;
 }
 
-#tableCards{
-  width: 52%;
+#tableCards {
+  width: 77%;
+  height: 75%;
+  margin: 5% 0 0 10%;
 }
 
-.tableCards{
+.tableCards {
   width: 15%;
-  padding-left: 2vh;
+  margin: 1%;
+  border: $cardBorder $black;
+  border-radius: $cards;
 }
 
 
 /* Exercise_Table */
 .table {
-  position: absolute;
   width: 100%;
   height: 5%;
-  left: 106px;
   top: 298px;
 }
 
 /* Multiple elements affected */
 .hand1, .hand2, .hand3, .hand4, .hand5 {
   width: 90%;
+  border: $cardBorder $black;
+  border-radius: $cards;
 }
 
-#playerCards, #tableCards {
-  padding-top: 10%;
+.hand1, .hand2, .hand3, .hand4, .hand5, .playerCards, .tableCards {
+  opacity: 0;
 }
+
+/* #playerCards, #tableCards {
+  margin-top: 10%;
+}*/
 

@@ -39,8 +39,6 @@ export function ChancesSlider() {
 
     const onSubmit = () => {
         let chancesText = document.getElementById("chances");
-        console.log(equity);
-        //console.log(value);
         if(value === Math.round(equity)) {
             chancesText.innerText = "Correct, your chances are " + Math.round(equity) + "%";
         }
@@ -67,8 +65,9 @@ export function ChancesSlider() {
                     </Grid>
                     <Grid item>
                         <Input
+                            disableUnderline={true}
                             id="chanceBox"
-                            value={value}
+                            value={value + "%"}
                             size="small"
                             onChange={handleInputChange}
                             onBlur={handleBlur}
@@ -76,15 +75,16 @@ export function ChancesSlider() {
                                 step: 10,
                                 min: 0,
                                 max: 100,
-                                type: 'number',
+                                type: 'text',
                                 'aria-labelledby': 'input-slider',
+
                             }}
                         />
                     </Grid>
                 </Grid>
             </Box>
             <div id="submitGuess">
-                <Button variant="contained" endIcon={<SendIcon/>} onClick={onSubmit}>
+                <Button variant="contained" onClick={onSubmit}>
                     SUBMIT
                 </Button>
             </div>
