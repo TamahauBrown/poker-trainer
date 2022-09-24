@@ -16,19 +16,15 @@ export function ExerciseHeader() {
         console.log("Entering " + exercise);
         let result = invoke(exercise, {});
         result.then(res => {
-            equity_response(res);
+            let cards: EquityResponse = {
+                board: (res as any).board,
+                opponent_hands: (res as any).opponent_hands,
+                equity: (res as any).equity * 100,
+                player_hand: (res as any).player_hand,
+            };
+            display_hands(cards);
+            equity = cards.equity;
         });
-    }
-
-    function equity_response(res) {
-        let cards: EquityResponse = {
-            board: (res as any).board,
-            opponent_hands: (res as any).opponent_hands,
-            equity: (res as any).equity * 100,
-            player_hand: (res as any).player_hand,
-        };
-        display_hands(cards);
-        equity = cards.equity;
     }
 
     function display_hands(cards) {
@@ -44,7 +40,8 @@ export function ExerciseHeader() {
         let cards = ["leftCard", "rightCard"];
         let i = 0;
         entries.forEach(function (card) {
-            full_path = image_path + card.suit + "_" + card.value + svg;
+            full_path = image_path + card + svg;
+            console.log(full_path);
             let playerCard = document.getElementById(cards[i]) as HTMLImageElement;
             playerCard.src = full_path;
             playerCard.style.opacity = "100%";
@@ -59,7 +56,7 @@ export function ExerciseHeader() {
             document.getElementById(cards[i]).style.opacity = "0%";
         }
         entries.forEach(function (card) {
-            full_path = image_path + card.suit + "_" + card.value + svg;
+            full_path = image_path + card + svg;
             let boardCard = document.getElementById(cards[i]) as HTMLImageElement;
             boardCard.src = full_path;
             boardCard.style.opacity = "100%";
@@ -81,7 +78,7 @@ export function ExerciseHeader() {
                     //let calculateWidth = 180 - 90 /  (10 - (cards.length - hand.length)); //REX TODO: Come up with a better math forumla here for opponent card sizes, 90% is all 5 cards, 180% is for 1 pair of cards.
                     // document.getElementById(cards[i]).style.display = "block";
                     document.getElementById(cards[i]).style.opacity = "100%";
-                    full_path = image_path + card.suit + "_" + card.value + svg;
+                    full_path = image_path + card + svg;
                     let opponentCard = document.getElementById(cards[i]) as HTMLImageElement;
                     //opponentCard.style.width = calculateWidth.toString() + "%";
                     opponentCard.src = full_path;
