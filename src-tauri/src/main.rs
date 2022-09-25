@@ -48,17 +48,27 @@ struct EquityEstimateResponse {
   // equity: f64,
 }
 
+impl EquityEstimateResponse {
+  fn new_from_deck(
+    deck: &mut CardDeck,
+    board_cards: usize,
+    num_opponent_hands: usize,
+  ) -> EquityEstimateResponse {
+    EquityEstimateResponse {
+      board: deck.deal_cards(board_cards).0.unwrap(),
+      player_hand: Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
+      opponent_hands: (0..num_opponent_hands).map(|_| Hand::from_vec(&deck.deal_cards(2).0.unwrap())).collect(),
+    }
+  }
+}
+
+
 #[tauri::command]
 fn equity_estimate() -> EquityEstimateResponse {
   let mut deck = CardDeck::new().unwrap();
 
-  let mut ans = EquityEstimateResponse {
-    board: deck.deal_cards(3).0.unwrap(),
-    player_hand: Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
-    opponent_hands: vec![Hand::from_vec(&deck.deal_cards(2).0.unwrap())],
-    // equity: 0.0,
-  };
-  let answer_equity = poker_lib::exact_equity_from_input(ans.player_hand, ans.opponent_hands[0], &ans.board);
+  let ans = EquityEstimateResponse::new_from_deck(&mut deck, 3, 1);
+  let answer_equity = poker_lib::exact_equity_from_input(ans.player_hand, &ans.opponent_hands, &ans.board);
   *LAST_EQUITY.lock().unwrap() = Some(answer_equity);
   ans
 }
@@ -66,14 +76,9 @@ fn equity_estimate() -> EquityEstimateResponse {
 #[tauri::command]
 fn equity_estimate_2() -> EquityEstimateResponse {
   let mut deck = CardDeck::new().unwrap();
-
-  let mut ans = EquityEstimateResponse {
-    board: deck.deal_cards(4).0.unwrap(),
-    player_hand: Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
-    opponent_hands: vec![Hand::from_vec(&deck.deal_cards(2).0.unwrap()); 3],
-    // equity: 0.0,
-  };
-  let answer_equity = poker_lib::exact_equity_from_input(ans.player_hand, ans.opponent_hands[0], &ans.board);
+  
+  let ans = EquityEstimateResponse::new_from_deck(&mut deck, 4, 3);
+  let answer_equity = poker_lib::exact_equity_from_input(ans.player_hand, &ans.opponent_hands, &ans.board);
   *LAST_EQUITY.lock().unwrap() = Some(answer_equity);
   ans
 }
@@ -82,13 +87,8 @@ fn equity_estimate_2() -> EquityEstimateResponse {
 fn equity_estimate_3() -> EquityEstimateResponse {
   let mut deck = CardDeck::new().unwrap();
 
-  let mut ans = EquityEstimateResponse {
-    board: deck.deal_cards(5).0.unwrap(),
-    player_hand: Hand::from_vec(&deck.deal_cards(2).0.unwrap()),
-    opponent_hands: vec![Hand::from_vec(&deck.deal_cards(2).0.unwrap()); 5],
-    // equity: 0.0,
-  };
-  let answer_equity = poker_lib::exact_equity_from_input(ans.player_hand, ans.opponent_hands[0], &ans.board);
+  let ans = EquityEstimateResponse::new_from_deck(&mut deck, 5, 5);
+  let answer_equity = poker_lib::exact_equity_from_input(ans.player_hand, &ans.opponent_hands, &ans.board);
   *LAST_EQUITY.lock().unwrap() = Some(answer_equity);
   ans
 }

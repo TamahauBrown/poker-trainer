@@ -12,9 +12,9 @@ use std::iter::FromIterator;
 use crate::constants::*;
 
 /// A single player hand
-/// 0: index of card 1
-/// 1: index of card 2
-/// 2: weight of combo
+/// - 0: index of card 1
+/// - 1: index of card 2
+/// - 2: weight of combo
 #[derive(Debug, Clone, Copy)]
 pub struct Combo(pub u8, pub u8, pub u8);
 
