@@ -1,6 +1,6 @@
 // import VolumeUp from '@mui/icons-material/VolumeUp';
 import Slider from '@mui/material/Slider';
-import {styled} from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import MuiInput from "@mui/material/Input";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -9,8 +9,8 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import * as React from "react"
 
-// @ts-ignore
-import {equity} from "./ExerciseHeader.tsx";
+import { invoke } from '@tauri-apps/api/tauri';
+import { EquityEstimateUserInputResponse } from '../PokerModels/BEVars';
 
 const Input = styled(MuiInput)`
   width: 42px;
@@ -38,18 +38,22 @@ export function ChancesSlider() {
     };
 
     const onSubmit = () => {
-        let chancesText = document.getElementById("chances");
-        if(value === Math.round(equity)) {
-            chancesText.innerText = "Correct, your chances are " + Math.round(equity) + "%";
-        }
-        else {
-            chancesText.innerText = "Sorry, the correct value was: " + Math.round(equity) + "%";
-        }
+        let chancesText = document.getElementById("chances")!;
+        let request: Promise<EquityEstimateUserInputResponse> = invoke("equity_estimate_user_input", { userInput: value })
+        request.then(response => {
+            console.log(response);
+            if (response.close_enough) {
+                chancesText.innerText = "Correct, your chances are " + response.true_equity + "%";
+            }
+            else {
+                chancesText.innerText = "Sorry, the correct value was: " + response.true_equity + "%";
+            }
+        })
     }
 
-    return(
+    return (
         <div id="sliderFunctions">
-            <Box sx={{width: 500}} className="slider">
+            <Box sx={{ width: 500 }} className="slider">
                 <Typography id="input-slider" gutterBottom>
                     <b id="chances">What are your chances of winning?</b>
                 </Typography>

@@ -27,8 +27,7 @@ pub fn exact_equity_from_input(hand: Hand, opp_hands: &[Hand], board: &[Card]) -
     let range = HandRange::from_strings(vec![hand.to_string(), opponent_hands_as_string]);
     let board_mask = board.into_iter().fold("".to_owned(), |acc, c| acc + &c.to_string());
     let res = equity_calculator::exact_equity(&range, get_card_mask(&board_mask), 1).unwrap();
-    dbg!(res.get_equity());
-    return res.get_equity()[0];
+    return dbg!(res.get_equity())[0];
 }
 
 
