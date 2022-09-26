@@ -4,30 +4,21 @@ import {invoke} from "@tauri-apps/api/tauri";
 // @ts-ignore
 import {EquityResponse} from "../PokerModels/BEVars";
 
-let equity;
-
 export function ExerciseHeader() {
     let full_path;
     const image_path = "./Images/fronts/";
     const svg = ".svg";
 
     function equity_estimate(exercise : string) {
-        document.getElementById("chances").innerText = "What are your chances of winning?";
+        document.getElementById("chances")!.innerText = "What are your chances of winning?";
         console.log("Entering " + exercise);
-        let result = invoke(exercise, {});
-        result.then(res => {
-            let cards: EquityResponse = {
-                board: (res as any).board,
-                opponent_hands: (res as any).opponent_hands,
-                equity: (res as any).equity * 100,
-                player_hand: (res as any).player_hand,
-            };
+        let result: Promise<EquityResponse> = invoke(exercise, {});
+        result.then(cards => {
             display_hands(cards);
-            equity = cards.equity;
         });
     }
 
-    function display_hands(cards) {
+    function display_hands(cards: EquityResponse) {
         player_cards(cards.player_hand);
         board_cards(cards.board);
         opponent_cards(cards.opponent_hands);
@@ -115,5 +106,3 @@ export function ExerciseHeader() {
         </div>
     );
 }
-
-export {equity}

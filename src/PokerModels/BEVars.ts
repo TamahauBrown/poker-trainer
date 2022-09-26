@@ -5,8 +5,12 @@
 export interface EquityResponse{
     board: Card[];
     opponent_hands: Hand[];
-    equity: number;
     player_hand: Hand;
+}
+
+export interface EquityEstimateUserInputResponse {
+    true_equity: number,
+    close_enough: boolean,
 }
 
 export type Hand = [Card, Card];
