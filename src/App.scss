@@ -57,13 +57,14 @@
   flex-direction: column;
   margin: 0 0 0 15%;
   width: 8%;
-  height: 15vh;
+  height: 30vh;
   align-items: center;
 }
 
+/* Ex1 won't use this for some reason
 .exItem:hover {
-  height: 60vh;
-}
+  height: 30vh;
+} */
 
 .exerciseText {
   font-family: $Noto;
