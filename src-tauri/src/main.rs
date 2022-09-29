@@ -7,6 +7,7 @@ mod response_data;
 
 use std::sync::Mutex;
 
+use poker_lib::Hand;
 use response_data::*;
 use poker_lib::CardDeck;
 use tauri::Manager;
@@ -37,9 +38,21 @@ fn main() {
 fn equity_estimate() -> EquityEstimateResponse {
   let mut deck = CardDeck::new().unwrap();
 
-  let ans = EquityEstimateResponse::new_from_deck(&mut deck, 3, 1);
-  let answer_equity = poker_lib::exact_equity_from_input(ans.player_hand, &ans.opponent_hands, &ans.board);
-  *LAST_EQUITY.lock().unwrap() = Some(answer_equity);
+  let mut ans = EquityEstimateResponse::new_from_deck(&mut deck, 3, 0);
+
+  let cards_as_hands = deck.into_iter().collect::<Vec<_>>();
+  let mut card_and_scores = cards_as_hands.windows(2).map(|opponent_hand| {
+    let opponent_hand = vec![Hand::from_vec(&opponent_hand)];
+    let answer_equity = poker_lib::exact_equity_from_input(ans.player_hand, &opponent_hand, &ans.board);
+    (opponent_hand, answer_equity)
+  }).collect::<Vec<_>>();
+  card_and_scores.sort_by(|a,b| a.1.partial_cmp(&b.1).unwrap());
+  let avg = card_and_scores.iter().fold(0.0, |acc, b| acc + b.1) / card_and_scores.len() as f64;
+  // dbg!(avg);
+  // dbg!(card_and_scores.len());
+  let selected = card_and_scores[card_and_scores.len() / 4].clone();
+  ans.opponent_hands = selected.0;
+  *LAST_EQUITY.lock().unwrap() = Some(selected.1);
   ans
 }
 
