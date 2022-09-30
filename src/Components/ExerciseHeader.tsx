@@ -1,15 +1,17 @@
 import * as React from "react";
-import {invoke} from "@tauri-apps/api/tauri";
+import { invoke } from "@tauri-apps/api/tauri";
+import Menu from '@mui/icons-material/Menu';
 
 // @ts-ignore
-import {EquityResponse} from "../PokerModels/BEVars";
+import { EquityResponse } from "../PokerModels/BEVars";
 
 export function ExerciseHeader() {
     let full_path;
     const image_path = "./Images/fronts/";
     const svg = ".svg";
+    let sideBarVisible = false;
 
-    function equity_estimate(exercise : string) {
+    function equity_estimate(exercise: string) {
         document.getElementById("chances")!.innerText = "What are your chances of winning?";
         console.log("Entering " + exercise);
         let result: Promise<EquityResponse> = invoke(exercise, {});
@@ -65,43 +67,53 @@ export function ExerciseHeader() {
         let i = 0;
         // let j = 0;
         entries.forEach(function (hand) {
-                hand.forEach(function (card) {
-                    //let calculateWidth = 180 - 90 /  (10 - (cards.length - hand.length)); //REX TODO: Come up with a better math forumla here for opponent card sizes, 90% is all 5 cards, 180% is for 1 pair of cards.
-                    // document.getElementById(cards[i]).style.display = "block";
-                    document.getElementById(cards[i]).style.opacity = "100%";
-                    full_path = image_path + card + svg;
-                    let opponentCard = document.getElementById(cards[i]) as HTMLImageElement;
-                    //opponentCard.style.width = calculateWidth.toString() + "%";
-                    opponentCard.src = full_path;
-                    //if(i % 2 === 0) {
-                    //document.getElementById(percentages[j]).style.display = "block";
-                    //j++;
-                    //}
-                    i++;
-                });
-            }
-        )
-        ;
+            hand.forEach(function (card) {
+                //let calculateWidth = 180 - 90 /  (10 - (cards.length - hand.length)); //REX TODO: Come up with a better math forumla here for opponent card sizes, 90% is all 5 cards, 180% is for 1 pair of cards.
+                // document.getElementById(cards[i]).style.display = "block";
+                document.getElementById(cards[i]).style.opacity = "100%";
+                full_path = image_path + card + svg;
+                let opponentCard = document.getElementById(cards[i]) as HTMLImageElement;
+                //opponentCard.style.width = calculateWidth.toString() + "%";
+                opponentCard.src = full_path;
+                //if(i % 2 === 0) {
+                //document.getElementById(percentages[j]).style.display = "block";
+                //j++;
+                //}
+                i++;
+            });
+        });
+    }
 
+    function toggle_sidebar() {
+        const containerClassList = document.getElementById("exercise")!.classList;
+        if (sideBarVisible) {
+            containerClassList.add('hidden')
+        } else {
+            containerClassList.remove('hidden')
+        }
+        sideBarVisible = !sideBarVisible;
     }
 
     return (
-        <div id="exercise">
-            <div className="exItem">
-                <img src={"../Exercises/equity-estimate.png"} className="exShape" id="ex1" onClick={() => equity_estimate('equity_estimate')}/>
-                <div className="exerciseText" id="ex1text">Chances</div>
-            </div>
-            <div className="exItem">
-                <img src={"../Exercises/chances_2.png"} className="exShape" id="ex2" onClick={() => equity_estimate('equity_estimate_2')} />
-                <div className="exerciseText" id="ex2text" >Chances 2</div>
-            </div>
-            <div className="exItem">
-                <img src={"../Exercises/chances_3.png"} className="exShape" id="ex3" onClick={() => equity_estimate('equity_estimate_3')} />
-                <div className="exerciseText" id="ex3text" >Chances 3</div>
-            </div>
-            <div className="exItem">
-                <div className="exShape" id="ex4" />
-                <div className="exerciseText" id="ex4text">Ex 4</div>
+        <div id="headerContainer">
+            <Menu color={"primary"} width="75%" id="exerciseMenuIcon" onClick={() => toggle_sidebar()}></Menu>
+            <div id="exercise" className="hidden">
+                <div className="exItem">
+                    <img src={"../Exercises/equity-estimate.png"} className="exShape" id="ex1" onClick={() => equity_estimate('equity_estimate')} />
+                    <div className="exerciseText" id="ex1text">Chances</div>
+                </div>
+                <div className="exItem">
+                    <img src={"../Exercises/chances_2.png"} className="exShape" id="ex2" onClick={() => equity_estimate('equity_estimate_2')} />
+                    <div className="exerciseText" id="ex2text" >Chances 2</div>
+                </div>
+                <div className="exItem">
+                    <img src={"../Exercises/chances_3.png"} className="exShape" id="ex3" onClick={() => equity_estimate('equity_estimate_3')} />
+                    <div className="exerciseText" id="ex3text" >Chances 3</div>
+                </div>
+                <div className="exItem">
+                    <div className="exShape" id="ex4" />
+                    <div className="exerciseText" id="ex4text">Ex 4</div>
+                </div>
             </div>
         </div>
     );
