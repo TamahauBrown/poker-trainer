@@ -47,7 +47,7 @@ fn equity_estimate() -> EquityEstimateResponse {
     (opponent_hand, answer_equity)
   }).collect::<Vec<_>>();
   card_and_scores.sort_by(|a,b| a.1.partial_cmp(&b.1).unwrap());
-  let avg = card_and_scores.iter().fold(0.0, |acc, b| acc + b.1) / card_and_scores.len() as f64;
+  // let avg = card_and_scores.iter().fold(0.0, |acc, b| acc + b.1) / card_and_scores.len() as f64;
   // dbg!(avg);
   // dbg!(card_and_scores.len());
   let selected = card_and_scores[card_and_scores.len() / 4].clone();
