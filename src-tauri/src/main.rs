@@ -82,7 +82,7 @@ fn equity_estimate_user_input(user_input: f64) -> EquityEstimateUserInputRespons
   dbg!(user_input);
   let ans = EquityEstimateUserInputResponse {
     true_equity,
-    close_enough: ((user_input / 100.0) - true_equity).abs() < 0.1,
+    close_enough: ((user_input / 100.0) - true_equity).abs() <= 0.03,
   };
   ans
 }
