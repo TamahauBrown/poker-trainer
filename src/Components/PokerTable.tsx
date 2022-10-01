@@ -14,7 +14,6 @@ import {Percentages} from "./Percentages.tsx";
 export function PokerTable() {
     return (
         <div id="floor">
-            <div id={"padding"} />
             <div id="pokerTable">
                 <div id="innerTableBorder">
                 <div id="mainTable">

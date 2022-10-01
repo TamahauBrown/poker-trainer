@@ -1,10 +1,15 @@
-@import './SCSS/Colours';
+@import './SCSS/colours';
 @import './SCSS/measurements';
 @import './SCSS/fonts';
+
+* {
+  box-sizing: border-box;
+}
 
 .App {
   display: flex;
   width: 100%;
+  height: 100vh;
 }
 
 .App-header {
@@ -45,19 +50,38 @@
 
 /* Exercise information */
 #exercise {
+  position: absolute;
   text-align: center;
   display: flex;
-  padding-top: 4px;
-  width: 100%;
-  height: 13.5vh;
+  flex-direction: column;
+  // padding-top: 4px;
+  width: 20%;
+  background-color: white;
+  height: 100vh;
+  padding-top: 50px;
+}
+
+#exerciseMenuIcon {
+  border-radius: $button;
+  border: solid;
+  margin: 6px;
+  background-color: white;
+  // top: 4px;
+  // left: 4px;
+  z-index: 20;
+  position: absolute;
+}
+
+#headerContainer {
+  position: relative;
 }
 
 .exItem {
   display: flex;
   flex-direction: column;
-  margin: 0 0 0 15%;
-  width: 8%;
-  height: 30vh;
+  // margin: 0 0 0 15%;
+  flex: 0 0 auto;
+  margin: 30px;
   align-items: center;
 }
 
@@ -87,9 +111,14 @@
 }
 
 #floor {
-  height: 86vh;
+  // height: 86vh;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  padding: 20px 0;
   background-color: $floor;
+  min-height: 100%;
+  gap: 20px;
 }
 
 #homeIcon {
@@ -225,10 +254,9 @@ E.g.: ohl1 means opponent hand left 1
 
 /* Poker table */
 #pokerTable {
-  height: 60%;
   width: 80%;
   background: $green;
-  margin: 0 auto 0 6%;
+  margin: 0 auto;
   border-radius: $table;
   border: 40px solid $black;
   padding: 3vh 0 3vh 0;
@@ -262,7 +290,6 @@ E.g.: ohl1 means opponent hand left 1
 }
 
 #sliderFunctions {
-  padding-top: 4%;
   justify-content: center;
   width: 100%;
   display: inline-flex;
@@ -310,7 +337,9 @@ E.g.: ohl1 means opponent hand left 1
   opacity: 0;
 }
 
+.hidden {
+  display: none !important;
+}
 /* #playerCards, #tableCards {
   margin-top: 10%;
 }*/
-
