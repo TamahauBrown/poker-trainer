@@ -9,13 +9,15 @@ mod percentage {
     where
         S: Serializer,
     {
-        serializer.serialize_f64((percentage * 100.0).round())
+        // Round to 2 dp
+        serializer.serialize_f64((percentage * 10000.0).round() / 100.0)
     }
 
     pub fn deserialize<'de, D>(deserializer: D) -> Result<f64, D::Error>
     where
         D: Deserializer<'de>,
     {
+        // TODO: Figure out how to undo the floating deserializing thing.
         f64::deserialize(deserializer)
     }
 }
