@@ -7,7 +7,7 @@ import {PokerTable} from "./Components/PokerTable.tsx";
 // @ts-ignore
 import {ExerciseHeader} from "./Components/ExerciseHeader.tsx";
 // @ts-ignore
-import {Sidebar} from "./Components/Sidebar.tsx"
+// import {Sidebar} from "./Components/Sidebar.tsx"
 
 function App() {
     return (
