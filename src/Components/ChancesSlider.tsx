@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
+// import SendIcon from "@mui/icons-material/Send";
 import * as React from "react"
 
 import { invoke } from '@tauri-apps/api/tauri';
@@ -43,10 +43,12 @@ export function ChancesSlider() {
         request.then(response => {
             console.log(response);
             if (response.close_enough) {
-                chancesText.innerText = "Correct, your chances are " + response.true_equity + "%";
+                //This could potentially cause users to question if this is correct. May need to just show full number
+                // but using 2dp when the chance is an int is not great
+                chancesText.innerText = "Correct, your chances are " + Math.round(response.true_equity) + "%";
             }
             else {
-                chancesText.innerText = "Sorry, the correct value was: " + response.true_equity + "%";
+                chancesText.innerText = "Sorry, the correct value was: " + Math.round(response.true_equity) + "%";
             }
         })
     }

@@ -99,15 +99,15 @@ export function ExerciseHeader() {
             <Menu color={"primary"} width="75%" id="exerciseMenuIcon" onClick={() => toggle_sidebar()}></Menu>
             <div id="exercise" className="hidden">
                 <div className="exItem">
-                    <img src={"../Exercises/equity-estimate.png"} className="exShape" id="ex1" onClick={() => equity_estimate('equity_estimate')} />
+                    <img src={"../Exercises/equity-estimate.png"} className="exShape" id="ex1" alt="Exercise 1" onClick={() => equity_estimate('equity_estimate')} />
                     <div className="exerciseText" id="ex1text">Chances</div>
                 </div>
                 <div className="exItem">
-                    <img src={"../Exercises/chances_2.png"} className="exShape" id="ex2" onClick={() => equity_estimate('equity_estimate_2')} />
+                    <img src={"../Exercises/chances_2.png"} className="exShape" id="ex2" alt="Exercise 2" onClick={() => equity_estimate('equity_estimate_2')} />
                     <div className="exerciseText" id="ex2text" >Chances 2</div>
                 </div>
                 <div className="exItem">
-                    <img src={"../Exercises/chances_3.png"} className="exShape" id="ex3" onClick={() => equity_estimate('equity_estimate_3')} />
+                    <img src={"../Exercises/chances_3.png"} className="exShape" id="ex3" alt="Exercise 3" onClick={() => equity_estimate('equity_estimate_3')} />
                     <div className="exerciseText" id="ex3text" >Chances 3</div>
                 </div>
                 <div className="exItem">
