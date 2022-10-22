@@ -5,89 +5,85 @@ import Menu from '@mui/icons-material/Menu';
 // @ts-ignore
 import { EquityResponse } from "../PokerModels/BEVars";
 
-export function ExerciseHeader() {
-    let full_path;
-    const image_path = "./Images/fronts/";
-    const svg = ".svg";
-    let sideBarVisible = false;
+let full_path;
+const image_path = "./Images/fronts/";
+const svg = ".svg";
+const chances = document.getElementById("chances")
 
-    function equity_estimate(exercise: string) {
-        document.getElementById("chances")!.innerText = "What are your chances of winning?";
-        console.log("Entering " + exercise);
+export function equity_estimate(exercise: string) {
+
+    if(chances != null) {
+        chances!.innerText = "What are your chances of winning?";
+    }
         let result: Promise<EquityResponse> = invoke(exercise, {});
         result.then(cards => {
             display_hands(cards);
         });
-    }
+}
 
-    function display_hands(cards: EquityResponse) {
-        player_cards(cards.player_hand);
-        board_cards(cards.board);
-        opponent_cards(cards.opponent_hands);
-    }
+function display_hands(cards: EquityResponse) {
+    player_cards(cards.player_hand);
+    board_cards(cards.board);
+    opponent_cards(cards.opponent_hands);
+}
 
-    /*
-        This will break if BE passes more than 2 values
-     */
-    function player_cards(entries) {
-        let cards = ["leftCard", "rightCard"];
-        let i = 0;
-        entries.forEach(function (card) {
+/*
+    This will break if BE passes more than 2 values
+ */
+function player_cards(entries) {
+    let cards = ["leftCard", "rightCard"];
+    let i = 0;
+    entries.forEach(function (card) {
+        full_path = image_path + card + svg;
+        console.log(full_path);
+        let playerCard = document.getElementById(cards[i]) as HTMLImageElement;
+        playerCard.src = full_path;
+        playerCard.style.opacity = "100%";
+        i++;
+    });
+}
+
+function board_cards(entries) {
+    let cards = ["flop1", "flop2", "flop3", "turn", "river"]
+    let i = 0;
+    for (let i = entries.length; i < cards.length; i++) {
+        document.getElementById(cards[i]).style.opacity = "0%";
+    }
+    entries.forEach(function (card) {
+        full_path = image_path + card + svg;
+        let boardCard = document.getElementById(cards[i]) as HTMLImageElement;
+        boardCard.src = full_path;
+        boardCard.style.opacity = "100%";
+        i++;
+    });
+
+}
+
+function opponent_cards(entries) {
+    let cards = ["ohl3", "ohr3", "ohl2", "ohr2", "ohl4", "ohr4", "ohl1", "ohr1", "ohl5", "ohr5"];
+    for (let i = entries.length; i < cards.length; i++) {
+        document.getElementById(cards[i]).style.opacity = "0%";
+    }
+    let i = 0;
+    // let j = 0;
+    entries.forEach(function (hand) {
+        hand.forEach(function (card) {
+            document.getElementById(cards[i]).style.opacity = "100%";
             full_path = image_path + card + svg;
-            console.log(full_path);
-            let playerCard = document.getElementById(cards[i]) as HTMLImageElement;
-            playerCard.src = full_path;
-            playerCard.style.opacity = "100%";
+            let opponentCard = document.getElementById(cards[i]) as HTMLImageElement;
+            opponentCard.src = full_path;
             i++;
         });
-    }
+    });
+}
 
-    function board_cards(entries) {
-        let cards = ["flop1", "flop2", "flop3", "turn", "river"]
-        let i = 0;
-        for (let i = entries.length; i < cards.length; i++) {
-            document.getElementById(cards[i]).style.opacity = "0%";
-        }
-        entries.forEach(function (card) {
-            full_path = image_path + card + svg;
-            let boardCard = document.getElementById(cards[i]) as HTMLImageElement;
-            boardCard.src = full_path;
-            boardCard.style.opacity = "100%";
-            i++;
-        });
-
-    }
-
-    function opponent_cards(entries) {
-        let cards = ["ohl3", "ohr3", "ohl2", "ohr2", "ohl4", "ohr4", "ohl1", "ohr1", "ohl5", "ohr5"];
-        //let percentages = ["percentage3", "percentage4", "percentage2", "percentage1", "percentage5"];
-        for (let i = entries.length; i < cards.length; i++) {
-            document.getElementById(cards[i]).style.opacity = "0%";
-        }
-        let i = 0;
-        // let j = 0;
-        entries.forEach(function (hand) {
-            hand.forEach(function (card) {
-                //let calculateWidth = 180 - 90 /  (10 - (cards.length - hand.length)); //REX TODO: Come up with a better math forumla here for opponent card sizes, 90% is all 5 cards, 180% is for 1 pair of cards.
-                // document.getElementById(cards[i]).style.display = "block";
-                document.getElementById(cards[i]).style.opacity = "100%";
-                full_path = image_path + card + svg;
-                let opponentCard = document.getElementById(cards[i]) as HTMLImageElement;
-                //opponentCard.style.width = calculateWidth.toString() + "%";
-                opponentCard.src = full_path;
-                //if(i % 2 === 0) {
-                //document.getElementById(percentages[j]).style.display = "block";
-                //j++;
-                //}
-                i++;
-            });
-        });
-    }
+export function ExerciseHeader() {
+    let sideBarVisible = false;
 
     function toggle_sidebar() {
         const containerClassList = document.getElementById("exercise")!.classList;
         if (sideBarVisible) {
-            containerClassList.add('hidden')
+            containerClassList.add('hidden');
         } else {
             containerClassList.remove('hidden')
         }
@@ -96,7 +92,7 @@ export function ExerciseHeader() {
 
     return (
         <div id="headerContainer">
-            <Menu color={"primary"} width="75%" id="exerciseMenuIcon" onClick={() => toggle_sidebar()}></Menu>
+            <Menu color={"primary"} width="75%" id="exerciseMenuIcon" onClick={() => toggle_sidebar()} />
             <div id="exercise" className="hidden">
                 <div className="exItem">
                     <img src={"../Exercises/equity-estimate.png"} className="exShape" id="ex1" alt="Exercise 1" onClick={() => equity_estimate('equity_estimate')} />

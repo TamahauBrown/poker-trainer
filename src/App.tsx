@@ -5,9 +5,12 @@ import * as React from 'react';
 // @ts-ignore
 import {PokerTable} from "./Components/PokerTable.tsx";
 // @ts-ignore
-import {ExerciseHeader} from "./Components/ExerciseHeader.tsx";
+import {ExerciseHeader, equity_estimate} from "./Components/ExerciseHeader.tsx";
 // @ts-ignore
 // import {Sidebar} from "./Components/Sidebar.tsx"
+document.onreadystatechange = () => {
+    equity_estimate('equity_estimate');
+}
 
 function App() {
     return (
